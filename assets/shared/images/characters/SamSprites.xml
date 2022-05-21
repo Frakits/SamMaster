@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="SamSprites.png">
+	<!-- Created with Adobe Animate version 21.0.7.42652 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="SamDown0000" x="0" y="0" width="417" height="437" frameX="-4" frameY="-5" frameWidth="421" frameHeight="442"/>
+	<SubTexture name="SamDown0001" x="417" y="0" width="417" height="437" frameX="-4" frameY="-5" frameWidth="421" frameHeight="442"/>
+	<SubTexture name="SamDown0002" x="834" y="0" width="416" height="438" frameX="-3" frameY="-4" frameWidth="421" frameHeight="442"/>
+	<SubTexture name="SamDown0003" x="1250" y="0" width="406" height="442" frameX="0" frameY="0" frameWidth="421" frameHeight="442"/>
+	<SubTexture name="SamIdle0000" x="1656" y="0" width="428" height="455" frameX="0" frameY="-6" frameWidth="428" frameHeight="461"/>
+	<SubTexture name="SamIdle0001" x="2084" y="0" width="428" height="455" frameX="0" frameY="-6" frameWidth="428" frameHeight="461"/>
+	<SubTexture name="SamIdle0002" x="2512" y="0" width="428" height="456" frameX="0" frameY="-5" frameWidth="428" frameHeight="461"/>
+	<SubTexture name="SamIdle0003" x="2940" y="0" width="422" height="457" frameX="-3" frameY="-4" frameWidth="428" frameHeight="461"/>
+	<SubTexture name="SamIdle0004" x="3362" y="0" width="409" height="461" frameX="-9" frameY="0" frameWidth="428" frameHeight="461"/>
+	<SubTexture name="SamLeft0000" x="0" y="461" width="396" height="453" frameX="0" frameY="-10" frameWidth="407" frameHeight="463"/>
+	<SubTexture name="SamLeft0001" x="396" y="461" width="396" height="453" frameX="0" frameY="-10" frameWidth="407" frameHeight="463"/>
+	<SubTexture name="SamLeft0002" x="792" y="461" width="397" height="454" frameX="-1" frameY="-9" frameWidth="407" frameHeight="463"/>
+	<SubTexture name="SamLeft0003" x="1189" y="461" width="396" height="463" frameX="-11" frameY="0" frameWidth="407" frameHeight="463"/>
+	<SubTexture name="SamRight0000" x="1585" y="461" width="405" height="473" frameX="-15" frameY="0" frameWidth="420" frameHeight="473"/>
+	<SubTexture name="SamRight0001" x="1990" y="461" width="405" height="473" frameX="-15" frameY="0" frameWidth="420" frameHeight="473"/>
+	<SubTexture name="SamRight0002" x="2395" y="461" width="404" height="472" frameX="-13" frameY="-1" frameWidth="420" frameHeight="473"/>
+	<SubTexture name="SamRight0003" x="2799" y="461" width="403" height="469" frameX="0" frameY="-4" frameWidth="420" frameHeight="473"/>
+	<SubTexture name="SamUp0000" x="3202" y="461" width="402" height="481" frameX="0" frameY="0" frameWidth="407" frameHeight="481"/>
+	<SubTexture name="SamUp0001" x="3604" y="461" width="402" height="481" frameX="0" frameY="0" frameWidth="407" frameHeight="481"/>
+	<SubTexture name="SamUp0002" x="0" y="942" width="402" height="479" frameX="-1" frameY="-2" frameWidth="407" frameHeight="481"/>
+	<SubTexture name="SamUp0003" x="402" y="942" width="404" height="471" frameX="-3" frameY="-9" frameWidth="407" frameHeight="481"/>
+</TextureAtlas>

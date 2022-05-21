@@ -1,0 +1,142 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				30,
+				-180
+			],
+			"loop": false,
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "SamLeft",
+			"indices": []
+		},
+		{
+			"offsets": [
+				-30,
+				-199
+			],
+			"loop": false,
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "SamDown",
+			"indices": []
+		},
+		{
+			"offsets": [
+				-10,
+				-161
+			],
+			"loop": false,
+			"anim": "singUP",
+			"fps": 24,
+			"name": "SamUp",
+			"indices": []
+		},
+		{
+			"offsets": [
+				-9,
+				-168
+			],
+			"loop": false,
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "SamRight",
+			"indices": []
+		},
+		{
+			"offsets": [
+				0,
+				-180
+			],
+			"loop": false,
+			"anim": "idle",
+			"fps": 24,
+			"name": "SamIdle",
+			"indices": []
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": true,
+			"fps": 24,
+			"anim": "idle-loop",
+			"indices": [
+				10,
+				11,
+				12,
+				12
+			],
+			"name": "SamIdle"
+		},
+		{
+			"offsets": [
+				-9,
+				10
+			],
+			"loop": true,
+			"fps": 24,
+			"anim": "singLEFT-loop",
+			"indices": [
+				12,
+				13,
+				14,
+				15
+			],
+			"name": "SamLeft"
+		},
+		{
+			"offsets": [
+				0,
+				27
+			],
+			"loop": true,
+			"fps": 24,
+			"anim": "singRIGHT-loop",
+			"indices": [
+				15,
+				16,
+				17,
+				18
+			],
+			"name": "SamRight"
+		},
+		{
+			"offsets": [
+				-6,
+				50
+			],
+			"loop": true,
+			"fps": 24,
+			"anim": "singUP-loop",
+			"indices": [
+				56,
+				57,
+				58,
+				59
+			],
+			"name": "SamUp"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/SamSprites",
+	"position": [
+		50,
+		50
+	],
+	"healthicon": "sam",
+	"flip_x": false,
+	"healthbar_colors": [
+		210,
+		210,
+		210
+	],
+	"camera_position": [
+		100,
+		200
+	],
+	"sing_duration": 3,
+	"scale": 1
+}
