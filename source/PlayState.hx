@@ -4104,7 +4104,6 @@ class PlayState extends MusicBeatState
 				{
 					if (resistance > 24)
 						{
-							
 							resistance -= 25;
 							health += 0.15;
 						}
