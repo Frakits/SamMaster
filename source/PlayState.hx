@@ -2336,11 +2336,14 @@ class PlayState extends MusicBeatState
 
 		resistancebarHelper = resistance;
 		if (resistance > 100)
-			resistance = 100;	
-		if (resistance < 25)
-			resistanceBar.color = 0xFF400400;
-		if (resistance > 25)
-			resistanceBar.color = 0xFFFF0000;
+			resistance = 100;
+		if (SONG.song.toLowerCase() == 'post-scriptum' || SONG.song.toLowerCase() == 'injection')
+			{
+				if (resistance < 25)
+					resistanceBar.color = 0xFF400400;
+				if (resistance > 25)
+					resistanceBar.color = 0xFFFF0000;
+			}
 		switch (curStage)
 		{
 			case 'schoolEvil':
