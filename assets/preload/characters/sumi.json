@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "SumiIdle"
+		},
+		{
+			"offsets": [
+				-285,
+				-20
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "SumiRight"
+		},
+		{
+			"offsets": [
+				-335,
+				-7
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "SumiDown"
+		},
+		{
+			"offsets": [
+				-390,
+				10
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "SumiLeft"
+		},
+		{
+			"offsets": [
+				-340,
+				-42
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "SumiUp"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/SumiSprites",
+	"position": [
+		-500,
+		-250
+	],
+	"healthicon": "face",
+	"flip_x": false,
+	"healthbar_colors": [
+		161,
+		161,
+		161
+	],
+	"camera_position": [
+		-400,
+		350
+	],
+	"sing_duration": 6.1,
+	"scale": 0.6
+}

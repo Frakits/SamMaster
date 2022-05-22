@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="SumiSprites.png">
+	<!-- Created with Adobe Animate version 22.0.0.93 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="SumiDown0000" x="0" y="0" width="1129" height="1323" frameX="-16" frameY="-10" frameWidth="1145" frameHeight="1338"/>
+	<SubTexture name="SumiDown0001" x="0" y="0" width="1129" height="1323" frameX="-16" frameY="-10" frameWidth="1145" frameHeight="1338"/>
+	<SubTexture name="SumiDown0002" x="1129" y="0" width="1145" height="1338"/>
+	<SubTexture name="SumiDown0003" x="1129" y="0" width="1145" height="1338"/>
+	<SubTexture name="SumiDown0004" x="1129" y="0" width="1145" height="1338"/>
+	<SubTexture name="SumiDown0005" x="1129" y="0" width="1145" height="1338"/>
+	<SubTexture name="SumiDown0006" x="1129" y="0" width="1145" height="1338"/>
+	<SubTexture name="SumiDown0007" x="1129" y="0" width="1145" height="1338"/>
+	<SubTexture name="SumiDown0008" x="1129" y="0" width="1145" height="1338"/>
+	<SubTexture name="SumiDown0009" x="1129" y="0" width="1145" height="1338"/>
+	<SubTexture name="SumiDown0010" x="1129" y="0" width="1145" height="1338"/>
+	<SubTexture name="SumiDown0011" x="1129" y="0" width="1145" height="1338"/>
+	<SubTexture name="SumiDown0012" x="1129" y="0" width="1145" height="1338"/>
+	<SubTexture name="SumiDown0013" x="1129" y="0" width="1145" height="1338"/>
+	<SubTexture name="SumiDown0014" x="1129" y="0" width="1145" height="1338"/>
+	<SubTexture name="SumiIdle0000" x="2274" y="0" width="1832" height="1400"/>
+	<SubTexture name="SumiIdle0001" x="2274" y="0" width="1832" height="1400"/>
+	<SubTexture name="SumiIdle0002" x="4106" y="0" width="1817" height="1381" frameX="-9" frameY="-10" frameWidth="1832" frameHeight="1400"/>
+	<SubTexture name="SumiIdle0003" x="4106" y="0" width="1817" height="1381" frameX="-9" frameY="-10" frameWidth="1832" frameHeight="1400"/>
+	<SubTexture name="SumiIdle0004" x="5923" y="0" width="1783" height="1324" frameX="-29" frameY="-33" frameWidth="1832" frameHeight="1400"/>
+	<SubTexture name="SumiIdle0005" x="5923" y="0" width="1783" height="1324" frameX="-29" frameY="-33" frameWidth="1832" frameHeight="1400"/>
+	<SubTexture name="SumiIdle0006" x="0" y="1400" width="1799" height="1326" frameX="-22" frameY="-26" frameWidth="1832" frameHeight="1400"/>
+	<SubTexture name="SumiIdle0007" x="0" y="1400" width="1799" height="1326" frameX="-22" frameY="-26" frameWidth="1832" frameHeight="1400"/>
+	<SubTexture name="SumiIdle0008" x="0" y="1400" width="1799" height="1326" frameX="-22" frameY="-26" frameWidth="1832" frameHeight="1400"/>
+	<SubTexture name="SumiIdle0009" x="0" y="1400" width="1799" height="1326" frameX="-22" frameY="-26" frameWidth="1832" frameHeight="1400"/>
+	<SubTexture name="SumiIdle0010" x="0" y="1400" width="1799" height="1326" frameX="-22" frameY="-26" frameWidth="1832" frameHeight="1400"/>
+	<SubTexture name="SumiIdle0011" x="0" y="1400" width="1799" height="1326" frameX="-22" frameY="-26" frameWidth="1832" frameHeight="1400"/>
+	<SubTexture name="SumiIdle0012" x="0" y="1400" width="1799" height="1326" frameX="-22" frameY="-26" frameWidth="1832" frameHeight="1400"/>
+	<SubTexture name="SumiIdle0013" x="0" y="1400" width="1799" height="1326" frameX="-22" frameY="-26" frameWidth="1832" frameHeight="1400"/>
+	<SubTexture name="SumiIdle0014" x="0" y="1400" width="1799" height="1326" frameX="-22" frameY="-26" frameWidth="1832" frameHeight="1400"/>
+	<SubTexture name="SumiLeft0000" x="1799" y="1400" width="1191" height="1344" frameX="-3" frameY="-18" frameWidth="1214" frameHeight="1369"/>
+	<SubTexture name="SumiLeft0001" x="1799" y="1400" width="1191" height="1344" frameX="-3" frameY="-18" frameWidth="1214" frameHeight="1369"/>
+	<SubTexture name="SumiLeft0002" x="2990" y="1400" width="1214" height="1369"/>
+	<SubTexture name="SumiLeft0003" x="2990" y="1400" width="1214" height="1369"/>
+	<SubTexture name="SumiLeft0004" x="2990" y="1400" width="1214" height="1369"/>
+	<SubTexture name="SumiLeft0005" x="2990" y="1400" width="1214" height="1369"/>
+	<SubTexture name="SumiLeft0006" x="2990" y="1400" width="1214" height="1369"/>
+	<SubTexture name="SumiLeft0007" x="2990" y="1400" width="1214" height="1369"/>
+	<SubTexture name="SumiLeft0008" x="2990" y="1400" width="1214" height="1369"/>
+	<SubTexture name="SumiLeft0009" x="2990" y="1400" width="1214" height="1369"/>
+	<SubTexture name="SumiLeft0010" x="2990" y="1400" width="1214" height="1369"/>
+	<SubTexture name="SumiLeft0011" x="2990" y="1400" width="1214" height="1369"/>
+	<SubTexture name="SumiLeft0012" x="2990" y="1400" width="1214" height="1369"/>
+	<SubTexture name="SumiLeft0013" x="2990" y="1400" width="1214" height="1369"/>
+	<SubTexture name="SumiLeft0014" x="2990" y="1400" width="1214" height="1369"/>
+	<SubTexture name="SumiRight0000" x="4204" y="1400" width="1219" height="1289" frameX="-24" frameY="-9" frameWidth="1247" frameHeight="1323"/>
+	<SubTexture name="SumiRight0001" x="4204" y="1400" width="1219" height="1289" frameX="-24" frameY="-9" frameWidth="1247" frameHeight="1323"/>
+	<SubTexture name="SumiRight0002" x="5423" y="1400" width="1247" height="1323"/>
+	<SubTexture name="SumiRight0003" x="5423" y="1400" width="1247" height="1323"/>
+	<SubTexture name="SumiRight0004" x="5423" y="1400" width="1247" height="1323"/>
+	<SubTexture name="SumiRight0005" x="5423" y="1400" width="1247" height="1323"/>
+	<SubTexture name="SumiRight0006" x="5423" y="1400" width="1247" height="1323"/>
+	<SubTexture name="SumiRight0007" x="5423" y="1400" width="1247" height="1323"/>
+	<SubTexture name="SumiRight0008" x="5423" y="1400" width="1247" height="1323"/>
+	<SubTexture name="SumiRight0009" x="5423" y="1400" width="1247" height="1323"/>
+	<SubTexture name="SumiRight0010" x="5423" y="1400" width="1247" height="1323"/>
+	<SubTexture name="SumiRight0011" x="5423" y="1400" width="1247" height="1323"/>
+	<SubTexture name="SumiRight0012" x="5423" y="1400" width="1247" height="1323"/>
+	<SubTexture name="SumiRight0013" x="5423" y="1400" width="1247" height="1323"/>
+	<SubTexture name="SumiRight0014" x="5423" y="1400" width="1247" height="1323"/>
+	<SubTexture name="SumiUp0000" x="6670" y="1400" width="1221" height="1283" frameX="-6" frameY="0" frameWidth="1227" frameHeight="1300"/>
+	<SubTexture name="SumiUp0001" x="6670" y="1400" width="1221" height="1283" frameX="-6" frameY="0" frameWidth="1227" frameHeight="1300"/>
+	<SubTexture name="SumiUp0002" x="0" y="2769" width="1227" height="1290" frameX="0" frameY="-10" frameWidth="1227" frameHeight="1300"/>
+	<SubTexture name="SumiUp0003" x="0" y="2769" width="1227" height="1290" frameX="0" frameY="-10" frameWidth="1227" frameHeight="1300"/>
+	<SubTexture name="SumiUp0004" x="0" y="2769" width="1227" height="1290" frameX="0" frameY="-10" frameWidth="1227" frameHeight="1300"/>
+	<SubTexture name="SumiUp0005" x="0" y="2769" width="1227" height="1290" frameX="0" frameY="-10" frameWidth="1227" frameHeight="1300"/>
+	<SubTexture name="SumiUp0006" x="0" y="2769" width="1227" height="1290" frameX="0" frameY="-10" frameWidth="1227" frameHeight="1300"/>
+	<SubTexture name="SumiUp0007" x="0" y="2769" width="1227" height="1290" frameX="0" frameY="-10" frameWidth="1227" frameHeight="1300"/>
+	<SubTexture name="SumiUp0008" x="0" y="2769" width="1227" height="1290" frameX="0" frameY="-10" frameWidth="1227" frameHeight="1300"/>
+	<SubTexture name="SumiUp0009" x="0" y="2769" width="1227" height="1290" frameX="0" frameY="-10" frameWidth="1227" frameHeight="1300"/>
+	<SubTexture name="SumiUp0010" x="0" y="2769" width="1227" height="1290" frameX="0" frameY="-10" frameWidth="1227" frameHeight="1300"/>
+	<SubTexture name="SumiUp0011" x="0" y="2769" width="1227" height="1290" frameX="0" frameY="-10" frameWidth="1227" frameHeight="1300"/>
+	<SubTexture name="SumiUp0012" x="0" y="2769" width="1227" height="1290" frameX="0" frameY="-10" frameWidth="1227" frameHeight="1300"/>
+	<SubTexture name="SumiUp0013" x="0" y="2769" width="1227" height="1290" frameX="0" frameY="-10" frameWidth="1227" frameHeight="1300"/>
+	<SubTexture name="SumiUp0014" x="0" y="2769" width="1227" height="1290" frameX="0" frameY="-10" frameWidth="1227" frameHeight="1300"/>
+</TextureAtlas>

@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="FrakBF.png">
+	<!-- Created with Adobe Animate version 22.0.0.93 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="FrakDownPose0000" x="0" y="0" width="536" height="404" frameX="0" frameY="-5" frameWidth="536" frameHeight="409"/>
+	<SubTexture name="FrakDownPose0001" x="0" y="0" width="536" height="404" frameX="0" frameY="-5" frameWidth="536" frameHeight="409"/>
+	<SubTexture name="FrakDownPose0002" x="536" y="0" width="530" height="407" frameX="-3" frameY="0" frameWidth="536" frameHeight="409"/>
+	<SubTexture name="FrakDownPose0003" x="536" y="0" width="530" height="407" frameX="-3" frameY="0" frameWidth="536" frameHeight="409"/>
+	<SubTexture name="FrakDownPose0004" x="536" y="0" width="530" height="407" frameX="-3" frameY="0" frameWidth="536" frameHeight="409"/>
+	<SubTexture name="FrakDownPose0005" x="536" y="0" width="530" height="407" frameX="-3" frameY="0" frameWidth="536" frameHeight="409"/>
+	<SubTexture name="FrakDownPose0006" x="536" y="0" width="530" height="407" frameX="-3" frameY="0" frameWidth="536" frameHeight="409"/>
+	<SubTexture name="FrakDownPose0007" x="536" y="0" width="530" height="407" frameX="-3" frameY="0" frameWidth="536" frameHeight="409"/>
+	<SubTexture name="FrakDownPose0008" x="536" y="0" width="530" height="407" frameX="-3" frameY="0" frameWidth="536" frameHeight="409"/>
+	<SubTexture name="FrakDownPose0009" x="536" y="0" width="530" height="407" frameX="-3" frameY="0" frameWidth="536" frameHeight="409"/>
+	<SubTexture name="FrakIdlePose0000" x="1066" y="0" width="495" height="456" frameX="-13" frameY="-17" frameWidth="512" frameHeight="473"/>
+	<SubTexture name="FrakIdlePose0001" x="1066" y="0" width="495" height="456" frameX="-13" frameY="-17" frameWidth="512" frameHeight="473"/>
+	<SubTexture name="FrakIdlePose0002" x="0" y="456" width="498" height="456" frameX="-11" frameY="-17" frameWidth="512" frameHeight="473"/>
+	<SubTexture name="FrakIdlePose0003" x="0" y="456" width="498" height="456" frameX="-11" frameY="-17" frameWidth="512" frameHeight="473"/>
+	<SubTexture name="FrakIdlePose0004" x="498" y="456" width="507" height="463" frameX="-5" frameY="-10" frameWidth="512" frameHeight="473"/>
+	<SubTexture name="FrakIdlePose0005" x="498" y="456" width="507" height="463" frameX="-5" frameY="-10" frameWidth="512" frameHeight="473"/>
+	<SubTexture name="FrakIdlePose0006" x="1005" y="456" width="510" height="473" frameX="0" frameY="0" frameWidth="512" frameHeight="473"/>
+	<SubTexture name="FrakIdlePose0007" x="1005" y="456" width="510" height="473" frameX="0" frameY="0" frameWidth="512" frameHeight="473"/>
+	<SubTexture name="FrakIdlePose0008" x="1515" y="456" width="505" height="470" frameX="-4" frameY="-3" frameWidth="512" frameHeight="473"/>
+	<SubTexture name="FrakIdlePose0009" x="1515" y="456" width="505" height="470" frameX="-4" frameY="-3" frameWidth="512" frameHeight="473"/>
+	<SubTexture name="FrakIdlePose0010" x="1515" y="456" width="505" height="470" frameX="-4" frameY="-3" frameWidth="512" frameHeight="473"/>
+	<SubTexture name="FrakIdlePose0011" x="1515" y="456" width="505" height="470" frameX="-4" frameY="-3" frameWidth="512" frameHeight="473"/>
+	<SubTexture name="FrakIdlePose0012" x="1515" y="456" width="505" height="470" frameX="-4" frameY="-3" frameWidth="512" frameHeight="473"/>
+	<SubTexture name="FrakIdlePose0013" x="1515" y="456" width="505" height="470" frameX="-4" frameY="-3" frameWidth="512" frameHeight="473"/>
+	<SubTexture name="FrakIdlePose0014" x="1515" y="456" width="505" height="470" frameX="-4" frameY="-3" frameWidth="512" frameHeight="473"/>
+	<SubTexture name="FrakLeftPose0000" x="0" y="929" width="523" height="488" frameX="0" frameY="0" frameWidth="529" frameHeight="496"/>
+	<SubTexture name="FrakLeftPose0001" x="0" y="929" width="523" height="488" frameX="0" frameY="0" frameWidth="529" frameHeight="496"/>
+	<SubTexture name="FrakLeftPose0002" x="523" y="929" width="523" height="495" frameX="-6" frameY="-1" frameWidth="529" frameHeight="496"/>
+	<SubTexture name="FrakLeftPose0003" x="523" y="929" width="523" height="495" frameX="-6" frameY="-1" frameWidth="529" frameHeight="496"/>
+	<SubTexture name="FrakLeftPose0004" x="523" y="929" width="523" height="495" frameX="-6" frameY="-1" frameWidth="529" frameHeight="496"/>
+	<SubTexture name="FrakLeftPose0005" x="523" y="929" width="523" height="495" frameX="-6" frameY="-1" frameWidth="529" frameHeight="496"/>
+	<SubTexture name="FrakLeftPose0006" x="523" y="929" width="523" height="495" frameX="-6" frameY="-1" frameWidth="529" frameHeight="496"/>
+	<SubTexture name="FrakLeftPose0007" x="523" y="929" width="523" height="495" frameX="-6" frameY="-1" frameWidth="529" frameHeight="496"/>
+	<SubTexture name="FrakLeftPose0008" x="523" y="929" width="523" height="495" frameX="-6" frameY="-1" frameWidth="529" frameHeight="496"/>
+	<SubTexture name="FrakLeftPose0009" x="523" y="929" width="523" height="495" frameX="-6" frameY="-1" frameWidth="529" frameHeight="496"/>
+	<SubTexture name="FrakRightPose0000" x="1046" y="929" width="527" height="470"/>
+	<SubTexture name="FrakRightPose0001" x="1046" y="929" width="527" height="470"/>
+	<SubTexture name="FrakRightPose0002" x="0" y="1424" width="516" height="464" frameX="-3" frameY="-6" frameWidth="527" frameHeight="470"/>
+	<SubTexture name="FrakRightPose0003" x="0" y="1424" width="516" height="464" frameX="-3" frameY="-6" frameWidth="527" frameHeight="470"/>
+	<SubTexture name="FrakRightPose0004" x="0" y="1424" width="516" height="464" frameX="-3" frameY="-6" frameWidth="527" frameHeight="470"/>
+	<SubTexture name="FrakRightPose0005" x="0" y="1424" width="516" height="464" frameX="-3" frameY="-6" frameWidth="527" frameHeight="470"/>
+	<SubTexture name="FrakRightPose0006" x="0" y="1424" width="516" height="464" frameX="-3" frameY="-6" frameWidth="527" frameHeight="470"/>
+	<SubTexture name="FrakRightPose0007" x="0" y="1424" width="516" height="464" frameX="-3" frameY="-6" frameWidth="527" frameHeight="470"/>
+	<SubTexture name="FrakRightPose0008" x="0" y="1424" width="516" height="464" frameX="-3" frameY="-6" frameWidth="527" frameHeight="470"/>
+	<SubTexture name="FrakRightPose0009" x="0" y="1424" width="516" height="464" frameX="-3" frameY="-6" frameWidth="527" frameHeight="470"/>
+	<SubTexture name="FrakUpPose0000" x="516" y="1424" width="552" height="588" frameX="0" frameY="0" frameWidth="554" frameHeight="588"/>
+	<SubTexture name="FrakUpPose0001" x="516" y="1424" width="552" height="588" frameX="0" frameY="0" frameWidth="554" frameHeight="588"/>
+	<SubTexture name="FrakUpPose0002" x="1068" y="1424" width="551" height="584" frameX="-3" frameY="-4" frameWidth="554" frameHeight="588"/>
+	<SubTexture name="FrakUpPose0003" x="1068" y="1424" width="551" height="584" frameX="-3" frameY="-4" frameWidth="554" frameHeight="588"/>
+	<SubTexture name="FrakUpPose0004" x="1068" y="1424" width="551" height="584" frameX="-3" frameY="-4" frameWidth="554" frameHeight="588"/>
+	<SubTexture name="FrakUpPose0005" x="1068" y="1424" width="551" height="584" frameX="-3" frameY="-4" frameWidth="554" frameHeight="588"/>
+	<SubTexture name="FrakUpPose0006" x="1068" y="1424" width="551" height="584" frameX="-3" frameY="-4" frameWidth="554" frameHeight="588"/>
+	<SubTexture name="FrakUpPose0007" x="1068" y="1424" width="551" height="584" frameX="-3" frameY="-4" frameWidth="554" frameHeight="588"/>
+	<SubTexture name="FrakUpPose0008" x="1068" y="1424" width="551" height="584" frameX="-3" frameY="-4" frameWidth="554" frameHeight="588"/>
+	<SubTexture name="FrakUpPose0009" x="1068" y="1424" width="551" height="584" frameX="-3" frameY="-4" frameWidth="554" frameHeight="588"/>
+</TextureAtlas>

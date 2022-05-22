@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "FrakIdlePose",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				34,
+				-71
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "FrakDownPose",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				37,
+				110
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "FrakUpPose",
+			"indices": []
+		},
+		{
+			"offsets": [
+				46,
+				-3
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "FrakRightPose"
+		},
+		{
+			"offsets": [
+				-15,
+				3
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "FrakLeftPose"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/FrakBF",
+	"position": [
+		150,
+		250
+	],
+	"healthicon": "frak",
+	"flip_x": true,
+	"healthbar_colors": [
+		255,
+		25,
+		28
+	],
+	"camera_position": [
+		30,
+		130
+	],
+	"sing_duration": 6.1,
+	"scale": 1
+}
