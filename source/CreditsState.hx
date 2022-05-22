@@ -81,6 +81,21 @@ class CreditsState extends MusicBeatState
 		#end
 
 		var pisspoop:Array<Array<String>> = [ //Name - Icon name - Description - Link - BG Color
+		['Vs S4M Resources'],
+			['Source Code',		'frakits',		'Links to the GitHub repository of Vs S4M',							'TO BE ADDED',	'FF4762'],
+			['Music Stems and Voice MIDI's',			'glitchcrack',		'Links to the Itch.io page containing all Music Stem files and Voice MIDI files',						'TO BE ADDED',		'4CFF6D'],
+		['Vs S4M Team'],
+			['S4M',		'sam',		'Support and The Main Character',							'file:///D:/Friday%20Night%20Funkin'/My%20%20Mods/Sam%20Mod/code/SamMaster/assets/extras/mewhennosocialmedia.png',	'C0C0C0'],
+			['GlitchCrack',			'glitchcrack',		'Main Director/Musician/Charter/Storywriter/Assistant Animator',						'https://twitter.com/glitch_crack',		'4CFF6D'],
+			['Frakits',				'frakits',			'Coder/Co-Director',					'https://twitter.com/frakitts',			'FF4762'],
+			['J4Y/Noiroxo/CandyCorspe',				'jay',			'Main Artist/Promo Artist',					'https://twitter.com/CandyCorspe',			'A8DAFF'],
+			['Kivro',				'kivro',			'Main Spriter/Animator',					'https://twitter.com/KivroNameTaken',			'A874FF'],
+			['Phoney',				'phoney',			'Graphic Artist/Concept Artist/Assistant UI Designer',					'https://media.discordapp.net/attachments/713654524765667369/977975924312137738/unknown.png',			'FF4762'],
+			['SeeZee',				'seezee',			'Assistant Coder/V3 Trailer Creator/UI Designer',					'https://twitter.com/doibehype',			'4CFF6D'],
+			[''],
+			['Former Vs S4M Contributors'],
+			['callofmester12',		'callofmester',		'Assistant Storywriter',							'https://twitter.com/callofmester12',	'158D2F'],
+			[''],
 			['Psych Engine Team'],
 			['Shadow Mario',		'shadowmario',		'Main Programmer of Psych Engine',							'https://twitter.com/Shadow_Mario_',	'444444'],
 			['RiverOaken',			'riveroaken',		'Main Artist/Animator of Psych Engine',						'https://twitter.com/RiverOaken',		'C30085'],
