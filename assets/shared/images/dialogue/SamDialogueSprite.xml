@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="SamDialogueSprite.png">
+	<!-- Created with Adobe Animate version 22.0.0.93 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="sam talk0000" x="0" y="0" width="287" height="590"/>
+	<SubTexture name="sam talk0001" x="287" y="0" width="287" height="590"/>
+	<SubTexture name="sam talk0002" x="287" y="0" width="287" height="590"/>
+	<SubTexture name="sam talk0003" x="574" y="0" width="287" height="590"/>
+	<SubTexture name="sam talk0004" x="0" y="0" width="287" height="590"/>
+	<SubTexture name="sam talk0005" x="0" y="0" width="287" height="590"/>
+	<SubTexture name="sam talk0006" x="0" y="0" width="287" height="590"/>
+	<SubTexture name="sam talk0007" x="0" y="0" width="287" height="590"/>
+	<SubTexture name="sam talk0008" x="0" y="0" width="287" height="590"/>
+	<SubTexture name="sam talk0009" x="0" y="0" width="287" height="590"/>
+	<SubTexture name="sam talk0010" x="0" y="0" width="287" height="590"/>
+	<SubTexture name="sam talk0011" x="0" y="0" width="287" height="590"/>
+	<SubTexture name="sam talk0012" x="0" y="0" width="287" height="590"/>
+	<SubTexture name="sam talk0013" x="0" y="0" width="287" height="590"/>
+	<SubTexture name="sam talk0014" x="0" y="0" width="287" height="590"/>
+	<SubTexture name="sam talk0015" x="0" y="0" width="287" height="590"/>
+	<SubTexture name="sam talk0016" x="0" y="0" width="287" height="590"/>
+	<SubTexture name="sam talk0017" x="0" y="0" width="287" height="590"/>
+	<SubTexture name="sam talk0018" x="0" y="0" width="287" height="590"/>
+	<SubTexture name="sam talk0019" x="0" y="0" width="287" height="590"/>
+	<SubTexture name="sam talk0020" x="0" y="0" width="287" height="590"/>
+	<SubTexture name="sam talk0021" x="0" y="0" width="287" height="590"/>
+	<SubTexture name="sam talk0022" x="0" y="0" width="287" height="590"/>
+	<SubTexture name="sam talk0023" x="0" y="0" width="287" height="590"/>
+	<SubTexture name="sam talk0024" x="0" y="0" width="287" height="590"/>
+	<SubTexture name="sam talk0025" x="0" y="0" width="287" height="590"/>
+	<SubTexture name="sam talk0026" x="0" y="0" width="287" height="590"/>
+	<SubTexture name="sam talk0027" x="0" y="0" width="287" height="590"/>
+	<SubTexture name="sam talk0028" x="0" y="0" width="287" height="590"/>
+	<SubTexture name="sam talk0029" x="0" y="0" width="287" height="590"/>
+</TextureAtlas>
