@@ -1,0 +1,27 @@
+{
+	"songs": [
+		["Hills", "sam", [146, 113, 253]],
+		["Demented", "sam", [146, 113, 253]],
+		["Sussus Samogus", "sam", [146, 113, 253]],
+		["Mentor", "sam", [146, 113, 253]],
+		["Interrupted B-side", "sam", [146, 113, 253]],
+		["Roadrat", "sam", [146, 113, 253]],
+		["Target", "sam", [146, 113, 253]]
+	],
+
+	"weekCharacters": [
+		"sam",
+		"bf",
+		"gf"
+	],
+	"weekBackground": "stage",
+
+	"storyName": "SamSational",
+	"difficulties": "Bonus",
+	"weekBefore": "weeksam",
+	"weekName": "Week 2",
+	"startUnlocked": true,
+
+	"hideStoryMode": false,
+	"hideFreeplay": false
+}

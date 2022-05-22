@@ -1027,26 +1027,30 @@ class PlayState extends MusicBeatState
 		timeBarBG.yAdd = -4;
 		add(timeBarBG);
 
-		resistanceBG = new AttachedSprite('timeBar');
-		resistanceBG.x = 1000;
-		resistanceBG.y = 370;
-		resistanceBG.scrollFactor.set();
-		resistanceBG.xAdd = -4;
-		resistanceBG.angle = -90;
-		resistanceBG.antialiasing = true;
-		resistanceBG.yAdd = -4;
-		add(resistanceBG);
+		if (SONG.song.toLowerCase() == 'post-scriptum' || SONG.song.toLowerCase() == 'injection')
+			{
+				resistanceBG = new AttachedSprite('timeBar');
+				resistanceBG.x = 1000;
+				resistanceBG.y = 370;
+				resistanceBG.scrollFactor.set();
+				resistanceBG.xAdd = -4;
+				resistanceBG.angle = -90;
+				resistanceBG.antialiasing = true;
+				resistanceBG.yAdd = -4;
+				add(resistanceBG);
 
-		resistanceBar = new FlxBar(resistanceBG.x + 4, resistanceBG.y + 4, LEFT_TO_RIGHT, Std.int(resistanceBG.width - 8), Std.int(resistanceBG.height - 8), this,
-		'resistancebarHelper', 0, 100);
-		resistanceBar.angle = -90;
-		resistanceBar.scrollFactor.set();
-		resistanceBar.antialiasing = true;
-		resistanceBar.createFilledBar(0xFF000000, 0xFFFF0000);
-		resistanceBar.numDivisions = 800; //How much lag this causes?? Should i tone it down to idk, 400 or 200?
-		add(resistanceBar);
-		resistanceBG.sprTracker = resistanceBar;
+				resistanceBar = new FlxBar(resistanceBG.x + 4, resistanceBG.y + 4, LEFT_TO_RIGHT, Std.int(resistanceBG.width - 8), Std.int(resistanceBG.height - 8), this,
+				'resistancebarHelper', 0, 100);
+				resistanceBar.angle = -90;
+				resistanceBar.scrollFactor.set();
+				resistanceBar.antialiasing = true;
+				resistanceBar.createFilledBar(0xFF000000, 0xFFFF0000);
+				resistanceBar.numDivisions = 800; //How much lag this causes?? Should i tone it down to idk, 400 or 200?
+				add(resistanceBar);
+				resistanceBG.sprTracker = resistanceBar;
+			}
 
+		
 		timeBar = new FlxBar(timeBarBG.x + 4, timeBarBG.y + 4, LEFT_TO_RIGHT, Std.int(timeBarBG.width - 8), Std.int(timeBarBG.height - 8), this,
 			'songPercent', 0, 1);
 		timeBar.scrollFactor.set();
@@ -1193,8 +1197,11 @@ class PlayState extends MusicBeatState
 		botplayTxt.cameras = [camHUD];
 		timeBar.cameras = [camHUD];
 		timeBarBG.cameras = [camHUD];
-		resistanceBar.cameras = [camHUD];
-		resistanceBG.cameras = [camHUD];
+		if (SONG.song.toLowerCase() == 'post-scriptum' || SONG.song.toLowerCase() == 'injection')
+			{
+				resistanceBar.cameras = [camHUD];
+				resistanceBG.cameras = [camHUD];
+			}
 		timeTxt.cameras = [camHUD];
 		doof.cameras = [camHUD];
 

@@ -1,8 +1,8 @@
 {
 	"songs": [
+		["Stargazing", "sam", [146, 113, 253]],
 		["Genesis", "sam", [146, 113, 253]],
-		["Post Scriptum", "sam", [146, 113, 253]],
-		["Stargazing", "sam", [146, 113, 253]]
+		["Post Scriptum", "sam", [146, 113, 253]]
 	],
 
 	"weekCharacters": [
