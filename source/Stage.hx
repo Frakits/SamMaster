@@ -29,7 +29,7 @@ class Stage extends FlxTypedGroup<FlxSprite>
             switch(stage)
             {
                 case 'void':
-    
+		
                     var air:FlxSprite = new FlxSprite(-400, -200).makeGraphic(2750, 1200);
                     air.setGraphicSize(FlxG.width * FlxG.height);
                     add(air);
@@ -59,10 +59,12 @@ class Stage extends FlxTypedGroup<FlxSprite>
                     add(dotGroup3);
                     add(dotGroup4);
     
-                    var ground:FlxSprite = new FlxSprite(-200, 650).loadGraphic(Paths.image("dipshit", 'sam'));
+                    var ground:FlxSprite = new FlxSprite(-200, 655).loadGraphic(Paths.image("dipshit", 'sam'));
                     ground.scale.set(1.6, 1.6);
                     ground.antialiasing = true;
                     add(ground);
+					
+					FlxTween.tween(ground, {y: 645}, 2.5, {ease: FlxEase.quadInOut, type: PINGPONG});
 
                     air.cameras = cam;
                     dotGroup1.cameras = cam;

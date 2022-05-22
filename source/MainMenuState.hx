@@ -11,6 +11,7 @@ import flixel.addons.display.shapes.FlxShapeCircle;
 import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.FlxCamera;
+import flixel.addons.display.FlxBackdrop;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.effects.FlxFlicker;
 import flixel.graphics.frames.FlxAtlasFrames;
@@ -24,6 +25,7 @@ import flixel.ui.FlxBar;
 import flixel.FlxBasic;
 import flixel.FlxObject;
 import flixel.util.FlxColor;
+import flixel.effects.particles.FlxEmitter;
 import lime.app.Application;
 import Achievements;
 import editors.MasterEditorMenu;
@@ -39,6 +41,8 @@ class MainMenuState extends MusicBeatState
 	var menuItems:FlxTypedGroup<FlxSprite>;
 	var transitioning:Bool = false;
 	var cerc:FlxSprite;
+	var bgScroll:FlxBackdrop;
+	var emitterBg:FlxEmitter;
 	private var camGame:FlxCamera;
 	private var camAchievement:FlxCamera;
 	private var camStage:FlxCamera;
@@ -97,12 +101,37 @@ class MainMenuState extends MusicBeatState
 		persistentUpdate = persistentDraw = true;
 
 		stageBG = new Stage('void', camStage);
-		camStage.zoom = 0.6;
+		camStage.zoom = 0.75;
 		camStage.scroll.y = 200;
+		camStage.angle = -2;
 		add(stageBG);
+		
+		bgScroll = new FlxBackdrop(Paths.image('checkerboard'), 5, 5, true, true);
+		bgScroll.scrollFactor.set();
+		bgScroll.screenCenter();
+		bgScroll.velocity.set(50, 50);
+		add(bgScroll);
+		
+		emitterBg = new FlxEmitter(FlxG.width / 2, FlxG.height, 5000);
+		emitterBg.launchMode = FlxEmitterMode.SQUARE;
+		emitterBg.makeParticles(5, 5, FlxColor.BLACK, 5000);
+		emitterBg.launchAngle.set(90, 90);
+		emitterBg.velocity.set(-100, -175, 100, -350);
+		emitterBg.scale.set(4, 4, 4, 4, 0, 0, 0, 0);
+		emitterBg.start(false, 0.025, 100000);
+		emitterBg.lifespan.set(3, 4.75);
+		emitterBg.angle.set(-90, 90);
+		emitterBg.drag.set(50, 50, 150, 150);
+		add(emitterBg);
+		
 		character = new FlxSprite(275, -245);
-		character.scale.set(0.5, 0.5);
+		character.scale.set(0.7, 0.7);
+		character.antialiasing = true;
 		add(character);
+		
+		var bars:FlxSprite = new FlxSprite().loadGraphic(Paths.image('bars'));
+		bars.screenCenter();
+		add(bars);
 
 		cerc = new FlxShapeCircle(-260, 420, 375, {thickness: 35, color: 0xFF212121, scaleMode: NORMAL,}, 0xFFf0f0f0);
 		cerc.antialiasing = true;
@@ -152,6 +181,25 @@ class MainMenuState extends MusicBeatState
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
 
+<<<<<<< Updated upstream
+=======
+		resistanceBarBG = new AttachedSprite('timeBar', null, "shared");
+		resistanceBarBG.y = 200;
+		resistanceBarBG.x = 200;
+		resistanceBarBG.alpha = 0;
+		resistanceBarBG.xAdd = -4;
+		resistanceBarBG.yAdd = -4;
+		//add(resistanceBarBG);
+
+		resistanceBar = new FlxBar(resistanceBarBG.x + 4, resistanceBarBG.y + 4, LEFT_TO_RIGHT, Std.int(resistanceBarBG.width - 8), Std.int(resistanceBarBG.height - 8), this,
+		"resistance", 0, 100);
+		resistanceBar.scrollFactor.set();
+		resistanceBar.createFilledBar(0xFF000000, 0xFFFFFFFF);
+		resistanceBar.numDivisions = 800; //How much lag this causes?? Should i tone it down to idk, 400 or 200?
+		//add(resistanceBar);
+		//resistanceBarBG.sprTracker = resistanceBar;
+
+>>>>>>> Stashed changes
 		// NG.core.calls.event.logEvent('swag').send();
 
 		changeItem();
@@ -169,7 +217,6 @@ class MainMenuState extends MusicBeatState
 		}
 		
 		#end
-		
 
 		super.create();
 	}
@@ -187,6 +234,7 @@ class MainMenuState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
+		emitterBg.x = FlxG.random.float(0, FlxG.width);
 		if (FlxG.sound.music.volume < 0.8)
 		{
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
@@ -195,7 +243,8 @@ class MainMenuState extends MusicBeatState
 		FlxG.watch.addQuick("curSelected", curSelected);
 		FlxG.watch.addQuick("x", cerc.x);
 		FlxG.watch.addQuick("y", cerc.y);
-
+		FlxG.watch.addQuick("beatShit", curStep);
+		Conductor.songPosition = FlxG.sound.music.time;
 
 		if (!selectedSomethin)
 		{
@@ -336,13 +385,24 @@ class MainMenuState extends MusicBeatState
 					}
 			});
 	}
+	
+	override function beatHit()
+	{
+		super.beatHit();
+		FlxTween.tween(FlxG.camera, {zoom:1.025}, 0.3, {ease: FlxEase.quadOut, type: BACKWARD});
+	}
 
 	function changeItem(huh:Int = 0)
 	{
 		curSelected += huh;
 		var curPortrait:String = optionShit[curSelected];
-		character.setPosition(optionOffsets[curSelected][0], optionOffsets[curSelected][1]);
+		character.setPosition(optionOffsets[curSelected][0]+30, optionOffsets[curSelected][1]-5);
+		
+		FlxTween.cancelTweensOf(character);
+		FlxTween.tween(character, {y: optionOffsets[curSelected][1]+5}, 2, {ease: FlxEase.quadInOut, type: PINGPONG});
 		character.loadGraphic(Paths.image('portraits/$curPortrait', 'sam'));
+		
+		FlxG.camera.shake(0.00125, 0.1);
 
 		if (curSelected >= menuItems.length)
 			curSelected = 0;
