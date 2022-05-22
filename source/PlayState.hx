@@ -1201,7 +1201,7 @@ class PlayState extends MusicBeatState
 			{
 				resistanceBar.cameras = [camHUD];
 				resistanceBG.cameras = [camHUD];
-			}
+			}4
 		timeTxt.cameras = [camHUD];
 		doof.cameras = [camHUD];
 
@@ -2328,8 +2328,6 @@ class PlayState extends MusicBeatState
 
 
 		callOnLuas('onUpdate', [elapsed]);
-		FlxG.watch.addQuick('bar', resistanceBG.x);
-		FlxG.watch.addQuick('bary', resistanceBG.y);
 		FlxG.watch.addQuick('dadx', dadGroup.x);
 		FlxG.watch.addQuick('resistance', resistance);
 		FlxG.watch.addQuick('dady', dadGroup.y);
