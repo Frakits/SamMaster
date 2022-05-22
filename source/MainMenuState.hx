@@ -69,7 +69,9 @@ class MainMenuState extends MusicBeatState
 	var circlePath:Float = 0.1;
 	var circlePath2:Float = 0.05;
 	var stageBG:Stage;
-
+	var resistance:Float = 0;
+	private var resistanceBarBG:AttachedSprite;
+	public var resistanceBar:FlxBar;
 
 	override function create()
 	{
@@ -258,6 +260,11 @@ class MainMenuState extends MusicBeatState
 				MusicBeatState.switchState(new TitleState());
 			}
 
+			if(FlxG.keys.pressed.UP)
+				resistance += 1;
+		
+			if(FlxG.keys.pressed.DOWN)
+				resistance -= 1;
 			if(FlxG.keys.justPressed.F)
 				{
 					FlxG.resizeGame(640, 720);
