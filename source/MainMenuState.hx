@@ -65,9 +65,7 @@ class MainMenuState extends MusicBeatState
 	var circlePath:Float = 0.1;
 	var circlePath2:Float = 0.05;
 	var stageBG:Stage;
-	var resistance:Float = 0;
-	private var resistanceBarBG:AttachedSprite;
-	public var resistanceBar:FlxBar;
+
 
 	override function create()
 	{
@@ -154,22 +152,6 @@ class MainMenuState extends MusicBeatState
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
 
-		resistanceBarBG = new AttachedSprite('timeBar', null, "shared");
-		resistanceBarBG.y = 200;
-		resistanceBarBG.x = 200;
-		resistanceBarBG.alpha = 0;
-		resistanceBarBG.xAdd = -4;
-		resistanceBarBG.yAdd = -4;
-		add(resistanceBarBG);
-
-		resistanceBar = new FlxBar(resistanceBarBG.x + 4, resistanceBarBG.y + 4, LEFT_TO_RIGHT, Std.int(resistanceBarBG.width - 8), Std.int(resistanceBarBG.height - 8), this,
-		"resistance", 0, 100);
-		resistanceBar.scrollFactor.set();
-		resistanceBar.createFilledBar(0xFF000000, 0xFFFFFFFF);
-		resistanceBar.numDivisions = 800; //How much lag this causes?? Should i tone it down to idk, 400 or 200?
-		add(resistanceBar);
-		resistanceBarBG.sprTracker = resistanceBar;
-
 		// NG.core.calls.event.logEvent('swag').send();
 
 		changeItem();
@@ -246,11 +228,6 @@ class MainMenuState extends MusicBeatState
 				MusicBeatState.switchState(new TitleState());
 			}
 
-			if(FlxG.keys.pressed.UP)
-				resistance += 1;
-		
-			if(FlxG.keys.pressed.DOWN)
-				resistance -= 1;
 			if(FlxG.keys.justPressed.F)
 				{
 					FlxG.resizeGame(640, 720);
