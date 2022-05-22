@@ -161,7 +161,6 @@ class LoadingState extends MusicBeatState
 
 		Paths.setCurrentLevel(directory);
 		trace('Setting asset folder to ' + directory);
-		trace("song:" + getSongPath());
 
 		#if NO_PRELOAD_ALL
 		var loaded:Bool = false;
