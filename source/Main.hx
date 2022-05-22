@@ -17,7 +17,7 @@ import openfl.display.FPS;
 import openfl.display.Sprite;
 import openfl.events.Event;
 import openfl.display.StageScaleMode;
-import flixel.system.scaleModes.FixedScaleAdjustSizeScaleMode;
+import flixel.system.scaleModes.PixelPerfectScaleMode;
 
 class Main extends Sprite
 {
@@ -85,7 +85,7 @@ class Main extends Sprite
 		FlxGraphic.defaultPersist = true;
 		// the reason for this is we're going to be handling our own cache smartly
 		addChild(new FlxGame(gameWidth, gameHeight, initialState, zoom, framerate, framerate, false, startFullscreen));
-		FlxG.scaleMode = new FixedScaleAdjustSizeScaleMode();
+		FlxG.scaleMode = new PixelPerfectScaleMode();
 		
 		#if !mobile
 		fpsVar = new FPS(10, 3, 0xFFFFFF);
