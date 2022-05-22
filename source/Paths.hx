@@ -219,10 +219,17 @@ class Paths
 	inline static public function voices(song:String, diff:String, cover:String):Any
 	{
 		var songKey:String;
-		if(diff == 'Erect')
-			songKey = '${song.toLowerCase().replace(' ', '-')}/${song.toLowerCase().replace(' ', '-')}' + '-erect/Voices-' + cover;
+		if (!sys.FileSystem.exists('${song.toLowerCase().replace(' ', '-')}/${song.toLowerCase().replace(' ', '-')}'))
+			{
+				songKey = '${song.toLowerCase().replace(' ', '-')}' + '/Voices';
+			}
 		else
-			songKey = '${song.toLowerCase().replace(' ', '-')}/${song.toLowerCase().replace(' ', '-')}/Voices-' + cover;
+			{
+				if(diff == 'Erect')
+					songKey = '${song.toLowerCase().replace(' ', '-')}/${song.toLowerCase().replace(' ', '-')}' + '-erect/Voices-' + cover;
+				else
+					songKey = '${song.toLowerCase().replace(' ', '-')}/${song.toLowerCase().replace(' ', '-')}/Voices-' + cover;
+			}
 		var voices = returnSound('songs', songKey);
 		return voices;
 	}
@@ -230,10 +237,17 @@ class Paths
 	inline static public function inst(song:String, diff:String):Any
 	{
 		var songKey:String;
-		if(diff == 'Erect')
-			songKey = '${song.toLowerCase().replace(' ', '-')}/${song.toLowerCase().replace(' ', '-')}' + '-erect/Inst';
+		if (!sys.FileSystem.exists('${song.toLowerCase().replace(' ', '-')}/${song.toLowerCase().replace(' ', '-')}'))
+			{
+				songKey = '${song.toLowerCase().replace(' ', '-')}' + '/Inst';
+			}
 		else
-			songKey = '${song.toLowerCase().replace(' ', '-')}/${song.toLowerCase().replace(' ', '-')}/Inst';
+			{
+				if(diff == 'Erect')
+					songKey = '${song.toLowerCase().replace(' ', '-')}/${song.toLowerCase().replace(' ', '-')}' + '-erect/Inst';
+				else
+					songKey = '${song.toLowerCase().replace(' ', '-')}/${song.toLowerCase().replace(' ', '-')}/Inst';
+			}
 		var inst = returnSound('songs', songKey);
 		return inst;
 	}
