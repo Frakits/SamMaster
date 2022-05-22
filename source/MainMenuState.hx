@@ -181,25 +181,6 @@ class MainMenuState extends MusicBeatState
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
 
-<<<<<<< Updated upstream
-=======
-		resistanceBarBG = new AttachedSprite('timeBar', null, "shared");
-		resistanceBarBG.y = 200;
-		resistanceBarBG.x = 200;
-		resistanceBarBG.alpha = 0;
-		resistanceBarBG.xAdd = -4;
-		resistanceBarBG.yAdd = -4;
-		//add(resistanceBarBG);
-
-		resistanceBar = new FlxBar(resistanceBarBG.x + 4, resistanceBarBG.y + 4, LEFT_TO_RIGHT, Std.int(resistanceBarBG.width - 8), Std.int(resistanceBarBG.height - 8), this,
-		"resistance", 0, 100);
-		resistanceBar.scrollFactor.set();
-		resistanceBar.createFilledBar(0xFF000000, 0xFFFFFFFF);
-		resistanceBar.numDivisions = 800; //How much lag this causes?? Should i tone it down to idk, 400 or 200?
-		//add(resistanceBar);
-		//resistanceBarBG.sprTracker = resistanceBar;
-
->>>>>>> Stashed changes
 		// NG.core.calls.event.logEvent('swag').send();
 
 		changeItem();
