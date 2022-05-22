@@ -57,6 +57,7 @@ class MainMenuState extends MusicBeatState
 	];
 	var optionOffsets:Array<Dynamic> = [
 		[275, -135],
+		[275, -135],
 		[275, -155],
 		[-380, -240],
 		[275, -245],
