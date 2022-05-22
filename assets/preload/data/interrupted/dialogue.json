@@ -1,0 +1,36 @@
+{
+	"dialogue": [
+		{
+			"sound": "",
+			"speed": 0.05,
+			"portrait": "bf",
+			"boxState": "normal",
+			"expression": "excited",
+			"text": "wow you picked it up real quick"
+		},
+		{
+			"sound": "",
+			"speed": 0.05,
+			"portrait": "bf",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "wanna step it up?"
+		},
+		{
+			"sound": "",
+			"speed": 0.05,
+			"portrait": "samdialoguesprite",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "*agreement noises*"
+		},
+		{
+			"sound": "",
+			"speed": 0.05,
+			"portrait": "bf",
+			"boxState": "normal",
+			"expression": "pissed",
+			"text": "bring it on!!"
+		}
+	]
+}
