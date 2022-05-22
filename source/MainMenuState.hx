@@ -269,7 +269,6 @@ class MainMenuState extends MusicBeatState
 					selectedSomethin = true;
 					FlxG.sound.play(Paths.sound('confirmMenu'));
 
-					if(ClientPrefs.flashing) FlxFlicker.flicker(magenta, 1.1, 0.15, false);
 					FlxTween.tween(cerc.scale, {x: 5, y: 3}, 0.5, {ease: FlxEase.quintOut});
 
 
