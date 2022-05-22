@@ -69,7 +69,9 @@ class MainMenuState extends MusicBeatState
 	var circlePath:Float = 0.1;
 	var circlePath2:Float = 0.05;
 	var stageBG:Stage;
-
+	var resistance:Float = 0;
+	private var resistanceBarBG:AttachedSprite;
+	public var resistanceBar:FlxBar;
 
 	override function create()
 	{
@@ -181,8 +183,6 @@ class MainMenuState extends MusicBeatState
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
 
-<<<<<<< Updated upstream
-=======
 		resistanceBarBG = new AttachedSprite('timeBar', null, "shared");
 		resistanceBarBG.y = 200;
 		resistanceBarBG.x = 200;
@@ -199,7 +199,6 @@ class MainMenuState extends MusicBeatState
 		//add(resistanceBar);
 		//resistanceBarBG.sprTracker = resistanceBar;
 
->>>>>>> Stashed changes
 		// NG.core.calls.event.logEvent('swag').send();
 
 		changeItem();
@@ -277,6 +276,11 @@ class MainMenuState extends MusicBeatState
 				MusicBeatState.switchState(new TitleState());
 			}
 
+			if(FlxG.keys.pressed.UP)
+				resistance += 1;
+		
+			if(FlxG.keys.pressed.DOWN)
+				resistance -= 1;
 			if(FlxG.keys.justPressed.F)
 				{
 					FlxG.resizeGame(640, 720);
