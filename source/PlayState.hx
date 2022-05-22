@@ -1201,7 +1201,7 @@ class PlayState extends MusicBeatState
 			{
 				resistanceBar.cameras = [camHUD];
 				resistanceBG.cameras = [camHUD];
-			}4
+			}
 		timeTxt.cameras = [camHUD];
 		doof.cameras = [camHUD];
 
