@@ -81,10 +81,11 @@ class CreditsState extends MusicBeatState
 		#end
 
 		var pisspoop:Array<Array<String>> = [ //Name - Icon name - Description - Link - BG Color
-		['Vs S4M Resources'],
+			['Vs S4M Resources'],
 			['Source Code',		'frakits',		'Links to the GitHub repository of Vs S4M',							'TO BE ADDED',	'FF4762'],
-			['Music Stems and Voice MIDI's',			'glitchcrack',		'Links to the Itch.io page containing all Music Stem files and Voice MIDI files',						'TO BE ADDED',		'4CFF6D'],
-		['Vs S4M Team'],
+			['Music Stems and Voice MIDIs',			'glitchcrack',		'Links to the Itch.io page containing all Music Stem files and Voice MIDI files',						'TO BE ADDED',		'4CFF6D'],
+			[''],
+			['Vs S4M Team'],
 			['S4M',		'sam',		'Support and The Main Character',							'https://media.discordapp.net/attachments/862341051741896714/977972706085580900/unknown.png?width=550&height=676',	'C0C0C0'],
 			['GlitchCrack',			'glitchcrack',		'Main Director/Musician/Charter/Storywriter/Assistant Animator',						'https://twitter.com/glitch_crack',		'4CFF6D'],
 			['Frakits',				'frakits',			'Coder/Co-Director',					'https://twitter.com/frakitts',			'FF4762'],
