@@ -1,12 +1,20 @@
 package;
 
+import ui.FlxVirtualPad.VirtualInputData;
+import flixel.math.FlxRandom;
+import flixel.system.FlxAssets.FlxGraphicAsset;
+import flixel.addons.plugin.control.FlxControlHandler;
+import flixel.addons.plugin.FlxMouseControl;
+
 import editors.ChartingState;
 import flixel.util.FlxTimer;
 #if desktop
 import Discord.DiscordClient;
 #end
 import flixel.FlxG;
+import flixel.util.FlxCollision;
 import flixel.util.FlxSpriteUtil;
+import flixel.addons.effects.chainable.FlxGlitchEffect;
 import flixel.addons.display.shapes.FlxShapeCircle;
 import flixel.FlxObject;
 import flixel.FlxSprite;
@@ -15,6 +23,7 @@ import flixel.addons.display.FlxBackdrop;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.effects.FlxFlicker;
 import flixel.graphics.frames.FlxAtlasFrames;
+import flixel.graphics.FlxGraphic;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
 import flixel.math.FlxMath;
@@ -25,6 +34,7 @@ import flixel.ui.FlxBar;
 import flixel.FlxBasic;
 import flixel.FlxObject;
 import flixel.util.FlxColor;
+import flixel.addons.display.FlxExtendedSprite;
 import flixel.effects.particles.FlxEmitter;
 import lime.app.Application;
 import Achievements;
@@ -39,6 +49,7 @@ class MainMenuState extends MusicBeatState
 	public static var curSelected:Int = 0;
 
 	var menuItems:FlxTypedGroup<FlxSprite>;
+	var menuPhysics:FlxTypedGroup<FlxExtendedSprite>;
 	var transitioning:Bool = false;
 	var cerc:FlxSprite;
 	var bgScroll:FlxBackdrop;
@@ -47,6 +58,7 @@ class MainMenuState extends MusicBeatState
 	private var camAchievement:FlxCamera;
 	private var camStage:FlxCamera;
 	var character:FlxSprite;
+	var cube:FlxExtendedSprite;
 	
 	var optionShit:Array<String> = [
 		'play',
@@ -197,6 +209,24 @@ class MainMenuState extends MusicBeatState
 		}
 		
 		#end
+		FlxG.plugins.add(new FlxMouseControl());
+		menuPhysics = new FlxTypedGroup<FlxExtendedSprite>();
+		add(menuPhysics);
+
+		for (i in 0...5)
+			{		
+				cube = new FlxExtendedSprite(50 * i + new FlxRandom().int(20, 300), -100 + new FlxRandom().int(20, 25), Paths.image('SAMLOGO', 'sam'));
+				cube.scale.set(0.1, 0.1);
+				cube.updateHitbox();
+				cube.solid = true;
+				cube.enableMouseClicks(false);
+				cube.enableMouseDrag();
+				cube.enableMouseThrow(50, 50);
+				cube.setGravity(0, 1700);
+				cube.frictionX = 50000;
+				cube.frictionY = 50000;
+				menuPhysics.add(cube);
+			}
 
 		super.create();
 	}
@@ -219,6 +249,8 @@ class MainMenuState extends MusicBeatState
 		{
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
 		}
+
+		FlxG.collide(menuPhysics, FlxCollision.createCameraWall(camGame, true, 1, true));
 
 		FlxG.watch.addQuick("curSelected", curSelected);
 		FlxG.watch.addQuick("x", cerc.x);
@@ -249,6 +281,11 @@ class MainMenuState extends MusicBeatState
 						circlePath2 = 0.05;
 					}
 			}
+
+			if (FlxG.keys.pressed.LEFT)
+				camGame.angle += 1;
+			if (FlxG.keys.pressed.RIGHT)
+				camGame.angle -= 1;
 
 			if (controls.BACK)
 			{
