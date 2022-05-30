@@ -3,10 +3,11 @@
 		["Hills", "sam", [146, 113, 253]],
 		["Demented", "sam", [146, 113, 253]],
 		["Sussus Samogus", "sam", [146, 113, 253]],
-		["Mentor", "sam", [146, 113, 253]],
+		["Mentor", "matt", [146, 113, 253]],
 		["Interrupted B-side", "sam", [146, 113, 253]],
-		["Roadrat", "sam", [146, 113, 253]],
-		["Target", "sam", [146, 113, 253]]
+		["Roadrat", "frakits", [146, 113, 253]],
+		["Target", "glitch", [146, 113, 253]],
+		["Prototune", "phoney", [146, 113, 253]]
 	],
 
 	"weekCharacters": [
