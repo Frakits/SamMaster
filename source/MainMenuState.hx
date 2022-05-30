@@ -213,18 +213,17 @@ class MainMenuState extends MusicBeatState
 		menuPhysics = new FlxTypedGroup<FlxExtendedSprite>();
 		add(menuPhysics);
 
-		for (i in 0...5)
+		for (i in 0...15)
 			{		
 				cube = new FlxExtendedSprite(50 * i + new FlxRandom().int(20, 300), -100 + new FlxRandom().int(20, 25), Paths.image('SAMLOGO', 'sam'));
-				cube.scale.set(0.1, 0.1);
+				cube.setGraphicSize(146, 90);
 				cube.updateHitbox();
 				cube.solid = true;
 				cube.enableMouseClicks(false);
-				cube.enableMouseDrag();
+				cube.enableMouseDrag(false, true);
 				cube.enableMouseThrow(50, 50);
 				cube.setGravity(0, 1700);
-				cube.frictionX = 50000;
-				cube.frictionY = 50000;
+				cube.antialiasing = true;
 				menuPhysics.add(cube);
 			}
 
@@ -249,6 +248,12 @@ class MainMenuState extends MusicBeatState
 		{
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
 		}
+
+		menuPhysics.forEach(function(spr:FlxExtendedSprite)
+			{
+				FlxG.collide(spr, menuPhysics);
+
+			});
 
 		FlxG.collide(menuPhysics, FlxCollision.createCameraWall(camGame, true, 1, true));
 
