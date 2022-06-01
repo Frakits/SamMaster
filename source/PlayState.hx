@@ -107,6 +107,8 @@ class PlayState extends MusicBeatState
 	public var GF_X:Float = 400;
 	public var GF_Y:Float = 130;
 
+	public static var skippingSong:Bool = false;
+
 	public var songSpeedTween:FlxTween;
 	public var songSpeed(default, set):Float = 1;
 	public var songSpeedType:String = "multiplicative";
@@ -2326,6 +2328,11 @@ class PlayState extends MusicBeatState
 
 		resistanceNote = resistance;
 
+		if (skippingSong == true)
+			{
+				finishSong();
+			}
+
 
 		callOnLuas('onUpdate', [elapsed]);
 		FlxG.watch.addQuick('dadx', dadGroup.x);
@@ -2337,12 +2344,15 @@ class PlayState extends MusicBeatState
 		resistancebarHelper = resistance;
 		if (resistance > 100)
 			resistance = 100;
-		if (SONG.song.toLowerCase() == 'post-scriptum' || SONG.song.toLowerCase() == 'injection')
+		if (!startingSong)
 			{
-				if (resistance < 25)
-					resistanceBar.color = 0xFF400400;
-				if (resistance > 25)
-					resistanceBar.color = 0xFFFF0000;
+				if (SONG.song.toLowerCase() == 'post-scriptum' ||SONG.song.toLowerCase() == 'injection')
+					{
+						if (resistance < 25)
+							resistanceBar.color = 0xFF400400;
+						if (resistance > 25)
+							resistanceBar.color = 0xFFFF0000;
+					}
 			}
 		switch (curStage)
 		{
@@ -3304,27 +3314,11 @@ class PlayState extends MusicBeatState
 	public var transitioning = false;
 	public function endSong():Void
 	{
-		//Should kill you if you tried to cheat
-		if(!startingSong) {
-			notes.forEach(function(daNote:Note) {
-				if(daNote.strumTime < songLength - Conductor.safeZoneOffset) {
-					health -= 0.05 * healthLoss;
-				}
-			});
-			for (daNote in unspawnNotes) {
-				if(daNote.strumTime < songLength - Conductor.safeZoneOffset) {
-					health -= 0.05 * healthLoss;
-				}
-			}
-
-			if(doDeathCheck()) {
-				return;
-			}
-		}
 		#if mobile
 		mcontrols.visible = false;
 		#end
 		timeBarBG.visible = false;
+		skippingSong = false;
 		timeBar.visible = false;
 		timeTxt.visible = false;
 		canPause = false;
@@ -3427,7 +3421,7 @@ class PlayState extends MusicBeatState
 					prevCamFollow = camFollow;
 					prevCamFollowPos = camFollowPos;
 
-					PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0], PlayState.storyPlaylist[0]);
+					PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0] + '-' + CoolUtil.difficulties[storyDifficulty], PlayState.storyPlaylist[0]);
 					FlxG.sound.music.stop();
 
 					if(winterHorrorlandNext) {
