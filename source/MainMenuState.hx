@@ -344,6 +344,7 @@ class MainMenuState extends MusicBeatState
 								{
 									case 'play':
 										MusicBeatState.switchState(new FreeplayState());
+										CoolUtil.browserLoad("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
 									#if MODS_ALLOWED
 									case 'mods':
 										MusicBeatState.switchState(new ModsMenuState());
