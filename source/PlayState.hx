@@ -509,8 +509,7 @@ class PlayState extends MusicBeatState
 				air.setGraphicSize(FlxG.width * FlxG.height);
 				add(air);
 
-				dotGroup1 = new FlxSprite(-90, -50).loadGraphic(Paths.image("dotsex1", 'sam'));
-				dotGroup1.scale.set(3.5, 3.5);
+				dotGroup1 = new FlxSprite(0, -50).loadGraphic(Paths.image("dotsex1", 'sam'));
 				dotGroup1.antialiasing = true;
 				FlxTween.tween(dotGroup1, {y: dotGroup1.y + 100}, 4, {type: FlxTweenType.PINGPONG, ease: FlxEase.quadInOut});
 				
@@ -3318,7 +3317,6 @@ class PlayState extends MusicBeatState
 		mcontrols.visible = false;
 		#end
 		timeBarBG.visible = false;
-		skippingSong = false;
 		timeBar.visible = false;
 		timeTxt.visible = false;
 		canPause = false;
@@ -3330,20 +3328,24 @@ class PlayState extends MusicBeatState
 		deathCounter = 0;
 		seenCutscene = false;
 
-		#if ACHIEVEMENTS_ALLOWED
-		if(achievementObj != null) {
-			return;
-		} else {
-			var achieve:String = checkForAchievement(['week1_nomiss', 'week2_nomiss', 'week3_nomiss', 'week4_nomiss',
-				'week5_nomiss', 'week6_nomiss', 'week7_nomiss', 'ur_bad',
-				'ur_good', 'hype', 'two_keys', 'toastie', 'debugger']);
-
-			if(achieve != null) {
-				startAchievement(achieve);
-				return;
+		if (!skippingSong)
+			{
+				#if ACHIEVEMENTS_ALLOWED
+				if(achievementObj != null) {
+					return;
+				} else {
+					var achieve:String = checkForAchievement(['week1_nomiss', 'week2_nomiss', 'week3_nomiss', 'week4_nomiss',
+						'week5_nomiss', 'week6_nomiss', 'week7_nomiss', 'ur_bad',
+						'ur_good', 'hype', 'two_keys', 'toastie', 'debugger']);
+		
+					if(achieve != null) {
+						startAchievement(achieve);
+						return;
+					}
+				}
+				#end
+				
 			}
-		}
-		#end
 		
 		#if LUA_ALLOWED
 		var ret:Dynamic = callOnLuas('onEndSong', []);
@@ -3395,6 +3397,7 @@ class PlayState extends MusicBeatState
 						FlxG.save.flush();
 					}
 					changedDifficulty = false;
+					skippingSong = false;
 				}
 				else
 				{
