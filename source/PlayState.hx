@@ -2346,7 +2346,7 @@ class PlayState extends MusicBeatState
 			resistance = 100;
 		if (!startingSong)
 			{
-				if (SONG.song.toLowerCase() == 'post-scriptum' ||SONG.song.toLowerCase() == 'injection')
+				if (SONG.song.toLowerCase() == 'post-scriptum' || SONG.song.toLowerCase() == 'injection')
 					{
 						if (resistance < 25)
 							resistanceBar.color = 0xFF400400;
