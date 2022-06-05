@@ -111,7 +111,8 @@ class VisualsUISubState extends BaseOptionsMenu
 			'pauseMusic',
 			'string',
 			'Tea Time',
-			['None', 'Breakfast', 'Tea Time']);
+			'Interrupted Vibe Mix',
+			['None', 'Breakfast', 'Tea Time', 'Interrupted Vibe Mix']);
 		addOption(option);
 		option.onChange = onChangePauseMusic;
 

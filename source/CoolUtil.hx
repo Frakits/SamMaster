@@ -19,7 +19,8 @@ class CoolUtil
 	public static var defaultDifficulties:Array<String> = [
 		'Classic',
 		'Expert',
-		'Erect'
+		'Erect',
+		'Orgasm'
 	];
 	public static var defaultDifficulty:String = 'Classic'; //The chart that has no suffix and starting difficulty on Freeplay/Story Mode
 
