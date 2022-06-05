@@ -1918,7 +1918,6 @@ class FunkinLua {
 			if(deprecated && !getBool('luaDeprecatedWarnings')) {
 				return;
 			}
-			PlayState.instance.addTextToDebug(text);
 			trace(text);
 		}
 		#end

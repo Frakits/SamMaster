@@ -1,5 +1,6 @@
 package;
 
+import lime.utils.Int16Array;
 import flixel.graphics.FlxGraphic;
 #if desktop
 import Discord.DiscordClient;
@@ -283,7 +284,6 @@ class PlayState extends MusicBeatState
 	// Lua shit
 	public static var instance:PlayState;
 	public var luaArray:Array<FunkinLua> = [];
-	private var luaDebugGroup:FlxTypedGroup<DebugLuaText>;
 	public var introSoundsSuffix:String = '';
 
 	// Debug buttons
@@ -458,6 +458,25 @@ class PlayState extends MusicBeatState
 		dadGroup = new FlxSpriteGroup(DAD_X, DAD_Y);
 		gfGroup = new FlxSpriteGroup(GF_X, GF_Y);
 
+		#if (MODS_ALLOWED && LUA_ALLOWED)
+		var doPush:Bool = false;
+		var luaFile:String = 'stages/' + curStage + '.lua';
+		if(FileSystem.exists(Paths.modFolders(luaFile))) {
+			luaFile = Paths.modFolders(luaFile);
+			doPush = true;
+		} else if(FileSystem.exists(Paths.getPreloadPath(luaFile))){
+			luaFile = Paths.getPreloadPath(luaFile);
+			if(FileSystem.exists(luaFile)) {
+				doPush = true;
+			}
+		} else {
+			doPush = false;
+		}
+			
+		if(doPush) 
+			luaArray.push(new FunkinLua(luaFile));
+		#end
+
 		switch (curStage)
 		{
 			case 'stage': //Week 1
@@ -504,39 +523,42 @@ class PlayState extends MusicBeatState
 			case 'void':
 
 				defaultCamZoom = 0.6;
-
 				var air:FlxSprite = new FlxSprite(-400, -200).makeGraphic(2750, 1200);
 				air.setGraphicSize(FlxG.width * FlxG.height);
 				add(air);
+				var stripes:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>();
+				add(stripes);
+				for (i in 0...60)
+					{
+						var num:Int = new FlxRandom().int(1, 5);
+						var stripe:FlxSprite = new FlxSprite(-850 + (60) * i, new FlxRandom().int(-120, -240)).loadGraphic(Paths.image('stripe$num', 'sam'));
+						FlxTween.tween(stripe, {y: new FlxRandom().int(-20, -120)}, new FlxRandom().float(6, 8), {ease: FlxEase.quadInOut, type:PINGPONG});
+						stripes.add(stripe);
+					}
 
-				dotGroup1 = new FlxSprite(0, -50).loadGraphic(Paths.image("dotsex1", 'sam'));
-				dotGroup1.antialiasing = true;
-				FlxTween.tween(dotGroup1, {y: dotGroup1.y + 100}, 4, {type: FlxTweenType.PINGPONG, ease: FlxEase.quadInOut});
-				
-				dotGroup2 = new FlxSprite(-90, 100).loadGraphic(Paths.image("dotsex2", 'sam'));
-				dotGroup2.scale.set(3.5, 3.5);
-				dotGroup2.antialiasing = true;
-				FlxTween.tween(dotGroup2, {y: dotGroup2.y + 100}, 4, {type: FlxTweenType.PINGPONG, ease: FlxEase.quadInOut, startDelay: 0.5});
-				
-				dotGroup3 = new FlxSprite(-90, 250).loadGraphic(Paths.image("dotsex3", 'sam'));
-				dotGroup3.scale.set(3.5, 3.5);
-				dotGroup3.antialiasing = true;
-				FlxTween.tween(dotGroup3, {y: dotGroup3.y + 100}, 4, {type: FlxTweenType.PINGPONG, ease: FlxEase.quadInOut, startDelay: 1});
-				
-				dotGroup4 = new FlxSprite(-90, 400).loadGraphic(Paths.image("dotsex2", 'sam'));
-				dotGroup4.scale.set(3.5, 3.5);
-				dotGroup4.antialiasing = true;
-				FlxTween.tween(dotGroup4, {y: dotGroup4.y + 100}, 4, {type: FlxTweenType.PINGPONG, ease: FlxEase.quadInOut, startDelay: 1.5});
-				
-				add(dotGroup1);
-				add(dotGroup2);
-				add(dotGroup3);
-				add(dotGroup4);
-
-				var ground:FlxSprite = new FlxSprite(-200, 650).loadGraphic(Paths.image("dipshit", 'sam'));
-				ground.scale.set(1.6, 1.6);
-				ground.antialiasing = true;
+				var ground:FlxSprite = new FlxSprite(-200, 850).loadGraphic(Paths.image("dipshit", 'sam'));
+				ground.scale.set(2.5, 2.5);
 				add(ground);
+			case 'voidfunny':
+
+				defaultCamZoom = 0.6;
+				var air:FlxSprite = new FlxSprite(-400, -200).makeGraphic(2750, 1200);
+				air.setGraphicSize(FlxG.width * FlxG.height);
+				add(air);
+				var stripes:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>();
+				add(stripes);
+				for (i in 0...60)
+					{
+						var num:Int = new FlxRandom().int(1, 5);
+						var stripe:FlxSprite = new FlxSprite(-850 + (60) * i, new FlxRandom().int(-120, -240)).loadGraphic(Paths.image('stripe$num', 'sam'));
+						FlxTween.tween(stripe, {y: new FlxRandom().int(-20, -120)}, new FlxRandom().float(6, 8), {ease: FlxEase.quadInOut, type:PINGPONG});
+						stripes.add(stripe);
+					}
+	
+				var ground:FlxSprite = new FlxSprite(-200, 850).loadGraphic(Paths.image("dipshit", 'sam'));
+				ground.scale.set(2.5, 2.5);
+				add(ground);
+	
 
 			case 'glitchyvoid':
 				defaultCamZoom = 0.6;
@@ -786,56 +808,10 @@ class PlayState extends MusicBeatState
 		add(gfGroup); //Needed for blammed lights
 
 		// Shitty layering but whatev it works LOL
-		if (curStage == 'limo')
-			add(limo);
 
 		add(dadGroup);
 		add(boyfriendGroup);
 
-		
-		if(curStage == 'spooky') {
-			add(halloweenWhite);
-		}
-
-		#if LUA_ALLOWED
-		luaDebugGroup = new FlxTypedGroup<DebugLuaText>();
-		luaDebugGroup.cameras = [camOther];
-		add(luaDebugGroup);
-		#end
-
-		#if mobile
-		mcontrols = new Mobilecontrols();
-		switch (mcontrols.mode)
-		{
-			case VIRTUALPAD_RIGHT | VIRTUALPAD_LEFT | VIRTUALPAD_CUSTOM:
-				controls.setVirtualPadNOTES(mcontrols._virtualPad, FULL, NONE);
-			case HITBOX:
-				controls.setHitBoxNOTES(mcontrols._hitbox);
-			default:
-		}
-		controls.trackedinputsNOTES = [];
-
-		var camcontrol = new FlxCamera();
-		FlxG.cameras.add(camcontrol);
-		camcontrol.bgColor.alpha = 0;
-		mcontrols.cameras = [camcontrol];
-
-		mcontrols.visible = false;
-
-		add(mcontrols);
-		#end
-
-		if(curStage == 'philly') {
-			phillyCityLightsEvent = new FlxTypedGroup<BGSprite>();
-			for (i in 0...5)
-			{
-				var light:BGSprite = new BGSprite('philly/win' + i, -10, 0, 0.3, 0.3);
-				light.visible = false;
-				light.setGraphicSize(Std.int(light.width * 0.85));
-				light.updateHitbox();
-				phillyCityLightsEvent.add(light);
-			}
-		}
 
 
 		// "GLOBAL" SCRIPTS
@@ -867,22 +843,6 @@ class PlayState extends MusicBeatState
 		
 
 		// STAGE SCRIPTS
-		#if (MODS_ALLOWED && LUA_ALLOWED)
-		var doPush:Bool = false;
-		var luaFile:String = 'stages/' + curStage + '.lua';
-		if(FileSystem.exists(Paths.modFolders(luaFile))) {
-			luaFile = Paths.modFolders(luaFile);
-			doPush = true;
-		} else {
-			luaFile = Paths.getPreloadPath(luaFile);
-			if(FileSystem.exists(luaFile)) {
-				doPush = true;
-			}
-		}
-
-		if(doPush) 
-			luaArray.push(new FunkinLua(luaFile));
-		#end
 
 		if(!modchartSprites.exists('blammedLightsBlack')) { //Creates blammed light black fade in case you didn't make your own
 			blammedLightsBlack = new ModchartSprite(FlxG.width * -0.5, FlxG.height * -0.5);
@@ -1243,68 +1203,7 @@ class PlayState extends MusicBeatState
 		var daSong:String = Paths.formatToSongPath(curSong);
 		if (isStoryMode && !seenCutscene)
 		{
-			switch (daSong)
-			{
-				case "monster":
-					var whiteScreen:FlxSprite = new FlxSprite(0, 0).makeGraphic(Std.int(FlxG.width * 2), Std.int(FlxG.height * 2), FlxColor.WHITE);
-					add(whiteScreen);
-					whiteScreen.scrollFactor.set();
-					whiteScreen.blend = ADD;
-					camHUD.visible = false;
-					snapCamFollowToPos(dad.getMidpoint().x + 150, dad.getMidpoint().y - 100);
-					inCutscene = true;
-
-					FlxTween.tween(whiteScreen, {alpha: 0}, 1, {
-						startDelay: 0.1,
-						ease: FlxEase.linear,
-						onComplete: function(twn:FlxTween)
-						{
-							camHUD.visible = true;
-							remove(whiteScreen);
-							startCountdown();
-						}
-					});
-					FlxG.sound.play(Paths.soundRandom('thunder_', 1, 2));
-					if(gf != null) gf.playAnim('scared', true);
-					boyfriend.playAnim('scared', true);
-
-				case "winter-horrorland":
-					var blackScreen:FlxSprite = new FlxSprite().makeGraphic(Std.int(FlxG.width * 2), Std.int(FlxG.height * 2), FlxColor.BLACK);
-					add(blackScreen);
-					blackScreen.scrollFactor.set();
-					camHUD.visible = false;
-					inCutscene = true;
-
-					FlxTween.tween(blackScreen, {alpha: 0}, 0.7, {
-						ease: FlxEase.linear,
-						onComplete: function(twn:FlxTween) {
-							remove(blackScreen);
-						}
-					});
-					FlxG.sound.play(Paths.sound('Lights_Turn_On'));
-					snapCamFollowToPos(400, -2050);
-					FlxG.camera.focusOn(camFollow);
-					FlxG.camera.zoom = 1.5;
-
-					new FlxTimer().start(0.8, function(tmr:FlxTimer)
-					{
-						camHUD.visible = true;
-						remove(blackScreen);
-						FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, 2.5, {
-							ease: FlxEase.quadInOut,
-							onComplete: function(twn:FlxTween)
-							{
-								startCountdown();
-							}
-						});
-					});
-				case 'senpai' | 'roses' | 'thorns':
-					if(daSong == 'roses') FlxG.sound.play(Paths.sound('ANGRY'));
-					schoolIntro(doof);
-
-				default:
-					startCountdown();
-			}
+			startCountdown();
 			seenCutscene = true;
 		}
 		else
@@ -1370,21 +1269,6 @@ class PlayState extends MusicBeatState
 		songSpeed = value;
 		noteKillOffset = 350 / songSpeed;
 		return value;
-	}
-
-	public function addTextToDebug(text:String) {
-		#if LUA_ALLOWED
-		luaDebugGroup.forEachAlive(function(spr:DebugLuaText) {
-			spr.y += 20;
-		});
-
-		if(luaDebugGroup.members.length > 34) {
-			var blah = luaDebugGroup.members[34];
-			blah.destroy();
-			luaDebugGroup.remove(blah);
-		}
-		luaDebugGroup.insert(0, new DebugLuaText(text, luaDebugGroup));
-		#end
 	}
 
 	public function reloadHealthBarColors() {
