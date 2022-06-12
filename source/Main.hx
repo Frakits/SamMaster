@@ -41,8 +41,6 @@ class Main extends Sprite
 	{
 		super();
 
-		SUtil.gameCrashCheck();
-
 		if (stage != null)
 		{
 			init();

@@ -1,14 +1,16 @@
-package flixel.addons.display;
+package;
 
 import flixel.FlxG;
 import flixel.FlxSprite;
-import flixel.addons.plugin.FlxMouseControl;
 import flixel.math.FlxMath;
 import flixel.math.FlxPoint;
 import flixel.math.FlxRect;
 import flixel.system.FlxAssets;
 import flixel.util.FlxCollision;
 import flixel.util.FlxDirectionFlags;
+import flixel.FlxObject;
+import flixel.input.keyboard.FlxKey;
+import flixel.util.FlxTimer;
 
 /**
  * An enhanced FlxSprite that is capable of receiving mouse clicks, being dragged and thrown, mouse springs, gravity and other useful things
@@ -16,7 +18,7 @@ import flixel.util.FlxDirectionFlags;
  * @link http://www.photonstorm.com
  * @author Richard Davey / Photon Storm
  */
-class FlxExtendedSprite extends FlxSprite
+class Player extends FlxSprite
 {
 
 	/**
@@ -75,6 +77,11 @@ class FlxExtendedSprite extends FlxSprite
 	 */
 	public var rect(get, never):FlxRect;
 
+	var speeding:Bool = false;
+	var wallgrabbing:Bool = false;
+
+	var facingLeft:Bool = false;
+
 	/**
 	 * Creates a white 8x8 square FlxExtendedSprite at the specified position.
 	 * Optionally can load a simple, one-frame graphic instead.
@@ -86,146 +93,163 @@ class FlxExtendedSprite extends FlxSprite
 	public function new(X:Float = 0, Y:Float = 0, ?SimpleGraphic:FlxGraphicAsset)
 	{
 		super(X, Y, SimpleGraphic);
+		maxVelocity.x = 225;
+		acceleration.y = gravityY;
+		drag.x = maxVelocity.x * 4;
 	}
 
-	/**
-	 * Core update loop
-	 */
+
 	override public function update(elapsed:Float):Void
 	{
 
-		if (hasGravity == true)
-		{
-			updateGravity();
-		}
+		if (drag.x != maxVelocity.x * 4)
+			drag.x = maxVelocity.x * 4;
+
+		acceleration.x = 0;
+		if (!FlxG.keys.anyPressed([LEFT, A, RIGHT, D]))
+			{
+				speeding = false;
+			}
+		if (!isTouching(WALL))
+			{
+				if (FlxG.keys.anyPressed([LEFT, A]))
+					{
+							acceleration.x -= drag.x;
+						if (!isTouching(NONE))
+							facingLeft = true;
+					}
+				if (FlxG.keys.anyPressed([RIGHT, D]))
+					{
+							acceleration.x += drag.x;
+						if (!isTouching(NONE))
+							facingLeft = false;
+					}
+				if (FlxG.keys.anyPressed([LEFT, A, RIGHT, D]))
+					{
+						speedHacks();
+					}
+			}
+		if (isTouching(FLOOR))
+			{
+
+				if (FlxG.keys.anyPressed([UP, W, SPACE]))
+					{
+						velocity.y = -acceleration.y * 0.3;
+					}
+			}
+		if (isTouching(WALL))
+			{	
+				var descend:Float = 20;
+				wallgrabbing = true;
+				velocity.y = descend;
+				descend += 0.5;
+				if (isTouching(LEFT) && !isTouching(FLOOR))
+					velocity.x = -2;
+				else if (!isTouching(FLOOR))
+					velocity.x = 2;
+				if (FlxG.keys.anyPressed([UP, W, SPACE]))
+					{
+						if (isTouching(LEFT) && FlxG.keys.anyPressed([RIGHT, D]))
+							{
+								velocity.x = 250;
+								velocity.y = -400;
+							}
+						else if (isTouching(RIGHT) && FlxG.keys.anyPressed([LEFT, A]))
+							{
+								velocity.x = -250;
+								velocity.y = -400;
+							}
+
+						acceleration.x = -acceleration.x * 1.2;
+					}
+				if (FlxG.keys.anyPressed([LEFT, A]))
+					acceleration.x = -3;
+				if (FlxG.keys.anyPressed([RIGHT, D]))
+					acceleration.x = 3;
+			}
+		if (speeding == true)
+			{
+				if (maxVelocity.x != 300)
+					maxVelocity.x += 0.25;
+			}
+		else
+			maxVelocity.x = 225;
 
 		super.update(elapsed);
+		FlxG.watch.addQuick('maxVelocity', maxVelocity.x);
+		FlxG.watch.addQuick('drag', drag.x);
+		FlxG.watch.addQuick('acceleration', acceleration.x);
+		FlxG.watch.addQuick('isSpeeding?', speeding);
+		FlxG.watch.addQuick('velocity.y', velocity.y);
+		FlxG.watch.addQuick('wasTouching', wasTouching);
 	}
-
-	/**
-	 * Called by update, applies friction if the sprite has gravity to stop jittery motion when slowing down
-	 */
-	function updateGravity():Void
-	{
-		//	A sprite can have horizontal and/or vertical gravity in each direction (positiive / negative)
-
-		//	First let's check the x movement
-		if (velocity.x != 0)
+	function updateDrag():Void
 		{
-			if (acceleration.x < 0)
+			// TODO: touch drag
+	
+			if (boundsRect != null)
 			{
-				//	Gravity is pulling them left
-				if ((touching & WALL) != 0)
-				{
-					drag.y = frictionY;
-
-					if ((wasTouching & WALL) == 0)
-					{
-						if (velocity.x < toleranceX)
-						{
-							velocity.x = 0;
-						}
-					}
-				}
-				else
-				{
-					drag.y = 0;
-				}
+				checkBoundsRect();
 			}
-			else if (acceleration.x > 0)
+	
+			if (boundsSprite != null)
 			{
-				//	Gravity is pulling them right
-				if ((touching & WALL) != 0)
-				{
-					//	Stop them sliding like on ice
-					drag.y = frictionY;
-
-					if ((wasTouching & WALL) == 0)
-					{
-						if (velocity.x > -toleranceX)
-						{
-							velocity.x = 0;
-						}
-					}
-				}
-				else
-				{
-					drag.y = 0;
-				}
+				checkBoundsSprite();
 			}
 		}
-
-		//	Now check the y movement
-		if (velocity.y != 0)
+	function speedHacks()
 		{
-			if (acceleration.y < 0)
-			{
-				//	Gravity is pulling them up (velocity is negative)
-				if ((touching & CEILING) != 0)
-				{
-					drag.x = frictionX;
-
-					if ((wasTouching & CEILING) == 0)
-					{
-						if (velocity.y < toleranceY)
-						{
-							velocity.y = 0;
-						}
-					}
-				}
-				else
-				{
-					drag.x = 0;
-				}
-			}
-			else if (acceleration.y > 0)
-			{
-				//	Gravity is pulling them down (velocity is positive)
-				if ((touching & FLOOR) != 0)
-				{
-					//	Stop them sliding like on ice
-					drag.x = frictionX;
-
-					if ((wasTouching & FLOOR) == 0)
-					{
-						if (velocity.y > -toleranceY)
-						{
-							velocity.y = 0;
-						}
-					}
-				}
-				else
-				{
-					drag.x = 0;
-				}
-			}
+				speeding = true;
 		}
-	}
 
 
 	/**
 	 * Bounds Rect check for the sprite drag
 	 */
-	function checkBoundsRect():Void
-	{
-		if (x < boundsRect.left)
+	 function checkBoundsRect():Void
 		{
-			x = boundsRect.x;
+			if (x < boundsRect.left)
+			{
+				x = boundsRect.x;
+			}
+			else if ((x + width) > boundsRect.right)
+			{
+				x = boundsRect.right - width;
+			}
+	
+			if (y < boundsRect.top)
+			{
+				y = boundsRect.top;
+			}
+			else if ((y + height) > boundsRect.bottom)
+			{
+				y = boundsRect.bottom - height;
+			}
 		}
-		else if ((x + width) > boundsRect.right)
+	
+		/**
+		 * Parent Sprite Bounds check for the sprite drag
+		 */
+		function checkBoundsSprite():Void
 		{
-			x = boundsRect.right - width;
+			if (x < boundsSprite.x)
+			{
+				x = boundsSprite.x;
+			}
+			else if ((x + width) > (boundsSprite.x + boundsSprite.width))
+			{
+				x = (boundsSprite.x + boundsSprite.width) - width;
+			}
+	
+			if (y < boundsSprite.y)
+			{
+				y = boundsSprite.y;
+			}
+			else if ((y + height) > (boundsSprite.y + boundsSprite.height))
+			{
+				y = (boundsSprite.y + boundsSprite.height) - height;
+			}
 		}
-
-		if (y < boundsRect.top)
-		{
-			y = boundsRect.top;
-		}
-		else if ((y + height) > boundsRect.bottom)
-		{
-			y = boundsRect.bottom - height;
-		}
-	}
 	/**
 	 * Gravity can be applied to the sprite, pulling it in any direction. Gravity is given in pixels per second and is applied as acceleration.
 	 * If you don't want gravity for a specific direction pass a value of zero. To cancel it entirely pass both values as zero.
@@ -298,5 +322,3 @@ class FlxExtendedSprite extends FlxSprite
 		return _rect;
 	}
 }
-
-typedef MouseCallback = FlxExtendedSprite->Int->Int->Void;
