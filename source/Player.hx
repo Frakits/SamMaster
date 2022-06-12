@@ -82,6 +82,8 @@ class Player extends FlxSprite
 
 	var facingLeft:Bool = false;
 
+	var descend:Float = 20;
+
 	/**
 	 * Creates a white 8x8 square FlxExtendedSprite at the specified position.
 	 * Optionally can load a simple, one-frame graphic instead.
@@ -96,6 +98,7 @@ class Player extends FlxSprite
 		maxVelocity.x = 225;
 		acceleration.y = gravityY;
 		drag.x = maxVelocity.x * 4;
+		elasticity = 1;
 	}
 
 
@@ -136,25 +139,25 @@ class Player extends FlxSprite
 					{
 						velocity.y = -acceleration.y * 0.3;
 					}
+				descend = 20;
 			}
 		if (isTouching(WALL))
 			{	
-				var descend:Float = 20;
 				wallgrabbing = true;
 				velocity.y = descend;
-				descend += 0.5;
+				descend += 2;
 				if (isTouching(LEFT) && !isTouching(FLOOR))
-					velocity.x = -2;
+					acceleration.x = -2;
 				else if (!isTouching(FLOOR))
-					velocity.x = 2;
+					acceleration.x = 2;
 				if (FlxG.keys.anyPressed([UP, W, SPACE]))
 					{
-						if (isTouching(LEFT) && FlxG.keys.anyPressed([RIGHT, D]))
+						if (isTouching(LEFT))
 							{
 								velocity.x = 250;
 								velocity.y = -400;
 							}
-						else if (isTouching(RIGHT) && FlxG.keys.anyPressed([LEFT, A]))
+						else if (isTouching(RIGHT))
 							{
 								velocity.x = -250;
 								velocity.y = -400;
@@ -162,10 +165,6 @@ class Player extends FlxSprite
 
 						acceleration.x = -acceleration.x * 1.2;
 					}
-				if (FlxG.keys.anyPressed([LEFT, A]))
-					acceleration.x = -3;
-				if (FlxG.keys.anyPressed([RIGHT, D]))
-					acceleration.x = 3;
 			}
 		if (speeding == true)
 			{
