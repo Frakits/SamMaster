@@ -246,18 +246,36 @@ class Note extends FlxSprite
 	var lastNoteOffsetXForPixelAutoAdjusting:Float = 0;
 	var lastNoteScaleToo:Float = 1;
 	public var originalHeightForCalcs:Float = 6;
-	function reloadNote(?prefix:String = '', ?texture:String = '', ?suffix:String = '') {
+	function reloadNote(?prefix:String = '', ?texture:String = '', ?suffix:String = '', player:String = '2') {
 		if(prefix == null) prefix = '';
 		if(texture == null) texture = '';
 		if(suffix == null) suffix = '';
 		
 		var skin:String = texture;
 		if(texture.length < 1) {
-			skin = PlayState.SONG.arrowSkin;
-			if(skin == null || skin.length < 1) {
-				skin = 'NOTE_assets';
+			if(player == '1')
+				{
+					if(skin.length < 1)
+						skin = PlayState.SONG.arrowSkin;
+					if(skin.length < 1)
+						skin = 'NOTE_assets';
+					if (skin != PlayState.arrowSkin1 && PlayState.arrowSkin1.length > 1)
+						skin = PlayState.arrowSkin1;
+				}
+
+			if (player == '2')
+				{
+					if(skin.length < 1)
+						skin = PlayState.SONG.arrowSkin2;
+					if(skin.length < 1)
+						skin = 'NOTE_assets';
+					
+					if (skin != PlayState.arrowSkin2 && PlayState.arrowSkin2.length > 1)
+						skin = PlayState.arrowSkin2;
+				}
+					
+			
 			}
-		}
 
 		var animName:String = null;
 		if(animation.curAnim != null) {
@@ -299,7 +317,7 @@ class Note extends FlxSprite
 				}*/
 			}
 		} else {
-			frames = Paths.getSparrowAtlas(blahblah);
+			frames = Paths.getSparrowAtlas(skin);
 			loadNoteAnims();
 			antialiasing = ClientPrefs.globalAntialiasing;
 		}
@@ -317,7 +335,7 @@ class Note extends FlxSprite
 		}
 	}
 
-	function loadNoteAnims() {
+	function loadNoteAnims(startup:Bool = false) {
 		animation.addByPrefix('greenScroll', 'green0');
 		animation.addByPrefix('redScroll', 'red0');
 		animation.addByPrefix('blueScroll', 'blue0');
@@ -329,14 +347,16 @@ class Note extends FlxSprite
 			animation.addByPrefix('greenholdend', 'green hold end');
 			animation.addByPrefix('redholdend', 'red hold end');
 			animation.addByPrefix('blueholdend', 'blue hold end');
+			centerOrigin();
 
 			animation.addByPrefix('purplehold', 'purple hold piece');
 			animation.addByPrefix('greenhold', 'green hold piece');
 			animation.addByPrefix('redhold', 'red hold piece');
 			animation.addByPrefix('bluehold', 'blue hold piece');
+			centerOrigin();
 		}
-
-		setGraphicSize(Std.int(width * 0.7));
+		if(texture != "")
+			setGraphicSize(Std.int(width * 0.7));
 		updateHitbox();
 	}
 
@@ -374,6 +394,7 @@ class Note extends FlxSprite
 
 			if (strumTime < Conductor.songPosition - Conductor.safeZoneOffset && !wasGoodHit)
 				tooLate = true;
+			reloadNote("", "", "", "1");
 		}
 		else
 		{
@@ -384,6 +405,7 @@ class Note extends FlxSprite
 				if((isSustainNote && prevNote.wasGoodHit) || strumTime <= Conductor.songPosition)
 					wasGoodHit = true;
 			}
+			reloadNote("", "", "", "2");
 		}
 
 		if (tooLate && !inEditor)
