@@ -253,7 +253,7 @@ class Note extends FlxSprite
 		
 		var skin:String = texture;
 		if(texture.length < 1) {
-			if(player == '2')
+			if(player == '1')
 				{
 					skin = PlayState.SONG.arrowSkin;
 					if(skin.length < 1) {
@@ -263,7 +263,7 @@ class Note extends FlxSprite
 						skin = PlayState.arrowSkin1;
 				}
 
-			if (player == '1')
+			if (player == '2')
 				{
 					skin = PlayState.SONG.arrowSkin2;
 					if(skin.length < 1) {
