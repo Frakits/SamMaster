@@ -1,1 +1,0 @@
-Stops the poison by reseting it back to Zero.
