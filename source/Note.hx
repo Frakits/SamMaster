@@ -255,20 +255,20 @@ class Note extends FlxSprite
 		if(texture.length < 1) {
 			if(player == '1')
 				{
-					skin = PlayState.SONG.arrowSkin;
-					if(skin.length < 1) {
+					if(skin.length < 1)
+						skin = PlayState.SONG.arrowSkin;
+					if(skin.length < 1)
 						skin = 'NOTE_assets';
-					}
 					if (skin != PlayState.arrowSkin1 && PlayState.arrowSkin1.length > 1)
 						skin = PlayState.arrowSkin1;
 				}
 
 			if (player == '2')
 				{
-					skin = PlayState.SONG.arrowSkin2;
-					if(skin.length < 1) {
+					if(skin.length < 1)
+						skin = PlayState.SONG.arrowSkin2;
+					if(skin.length < 1)
 						skin = 'NOTE_assets';
-					}
 					
 					if (skin != PlayState.arrowSkin2 && PlayState.arrowSkin2.length > 1)
 						skin = PlayState.arrowSkin2;
