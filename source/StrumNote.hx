@@ -21,7 +21,7 @@ class StrumNote extends FlxSprite
 	private function set_texture(value:String):String {
 		if(texture != value) {
 			texture = value;
-			reloadNote();
+			reloadNote('3');
 		}
 		return value;
 	}
@@ -35,13 +35,15 @@ class StrumNote extends FlxSprite
 		super(x, y);
 
 		var skin:String = 'NOTE_assets';
-		if(PlayState.SONG.arrowSkin != null && PlayState.SONG.arrowSkin.length > 1) skin = PlayState.SONG.arrowSkin;
+		if(PlayState.SONG.arrowSkin.length > 1 && player == 0) skin = PlayState.SONG.arrowSkin;
+		if(PlayState.SONG.arrowSkin2.length > 1 && player == 1) skin = PlayState.SONG.arrowSkin2;
+		if(skin == null) skin = 'NOTE_assets';
 		texture = skin; //Load texture and anims
 
 		scrollFactor.set();
 	}
 
-	public function reloadNote()
+	public function reloadNote(playerer:String = '')
 	{
 		var lastAnim:String = null;
 		if(animation.curAnim != null) lastAnim = animation.curAnim.name;
@@ -89,7 +91,8 @@ class StrumNote extends FlxSprite
 			animation.addByPrefix('red', 'arrowRIGHT');
 
 			antialiasing = ClientPrefs.globalAntialiasing;
-			setGraphicSize(Std.int(width * 0.7));
+			if (playerer == Std.string(player) || playerer == '3')
+				setGraphicSize(Std.int(width * 0.7));
 
 			switch (Math.abs(noteData))
 			{
@@ -135,11 +138,16 @@ class StrumNote extends FlxSprite
 				resetAnim = 0;
 			}
 		}
-		//if(animation.curAnim != null){ //my bad i was upset
-		if(animation.curAnim.name == 'confirm' && !PlayState.isPixelStage) {
-			centerOrigin();
-		//}
-		}
+		if(PlayState.arrowSkin2.length > 1 && texture != PlayState.arrowSkin2 && player == 0)
+			{
+				texture = PlayState.arrowSkin2;
+				reloadNote('2');
+			}
+		if(PlayState.arrowSkin1.length > 1 && texture != PlayState.arrowSkin1 && player == 1)
+			{
+				texture = PlayState.arrowSkin1;
+				reloadNote('1');
+			}
 
 		super.update(elapsed);
 	}

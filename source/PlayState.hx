@@ -110,6 +110,9 @@ class PlayState extends MusicBeatState
 
 	public static var skippingSong:Bool = false;
 
+	public static var arrowSkin1:String = null;
+	public static var arrowSkin2:String = null;
+
 	public var songSpeedTween:FlxTween;
 	public var songSpeed(default, set):Float = 1;
 	public var songSpeedType:String = "multiplicative";
@@ -303,6 +306,8 @@ class PlayState extends MusicBeatState
 		debugKeysChart = ClientPrefs.copyKey(ClientPrefs.keyBinds.get('debug_1'));
 		debugKeysCharacter = ClientPrefs.copyKey(ClientPrefs.keyBinds.get('debug_2'));
 		PauseSubState.songName = null; //Reset to default
+		PlayState.arrowSkin1 = null;
+		PlayState.arrowSkin2 = null;
 
 		keysArray = [
 			ClientPrefs.copyKey(ClientPrefs.keyBinds.get('note_left')),
@@ -2919,6 +2924,9 @@ class PlayState extends MusicBeatState
 					FlxG.camera.zoom += camZoom;
 					camHUD.zoom += hudZoom;
 				}
+			case 'Change NoteSkin':
+				arrowSkin1 = value1;
+				arrowSkin2 = value2;
 
 			case 'Trigger BG Ghouls':
 				if(curStage == 'schoolEvil' && !ClientPrefs.lowQuality) {

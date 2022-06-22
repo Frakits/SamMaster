@@ -28,6 +28,7 @@ typedef SwagSong =
 	var stage:String;
 
 	var arrowSkin:String;
+	var arrowSkin2:String;
 	var splashSkin:String;
 	var validScore:Bool;
 }

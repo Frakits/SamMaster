@@ -88,7 +88,8 @@ class ChartingState extends MusicBeatState
 		['Alt Idle Animation', "Sets a specified suffix after the idle animation name.\nYou can use this to trigger 'idle-alt' if you set\nValue 2 to -alt\n\nValue 1: Character to set (Dad, BF or GF)\nValue 2: New suffix (Leave it blank to disable)"],
 		['Screen Shake', "Value 1: Camera shake\nValue 2: HUD shake\n\nEvery value works as the following example: \"1, 0.05\".\nThe first number (1) is the duration.\nThe second number (0.05) is the intensity."],
 		['Change Character', "Value 1: Character to change (Dad, BF, GF)\nValue 2: New character's name"],
-		['Change Scroll Speed', "Value 1: Scroll Speed Multiplier (1 is default)\nValue 2: Time it takes to change fully in seconds."]
+		['Change Scroll Speed', "Value 1: Scroll Speed Multiplier (1 is default)\nValue 2: Time it takes to change fully in seconds."],
+		['Change NoteSkin', "Value 1: XBOOOOOOOOOOOOOOOOX LIIIIIIIIIIIIIIIIIIIIIIIIIIIVEEEEEEEEEE (bf noteskin)\nValue 2: AMBATAAABLOOOOOOOOOU (dad noteskin)."]
 	];
 
 	var _file:FileReference;
@@ -211,6 +212,7 @@ class ChartingState extends MusicBeatState
 				bpm: 150.0,
 				needsVoices: true,
 				arrowSkin: '',
+				arrowSkin2: '',
 				splashSkin: 'noteSplashes',//idk it would crash if i didn't
 				player1: 'bf',
 				player2: 'dad',
@@ -391,6 +393,7 @@ class ChartingState extends MusicBeatState
 	var playSoundDad:FlxUICheckBox = null;
 	var UI_songTitle:FlxUIInputText;
 	var noteSkinInputText:FlxUIInputText;
+	var noteSkinInputText2:FlxUIInputText;
 	var noteSplashesInputText:FlxUIInputText;
 	var stageDropDown:FlxUIDropDownMenuCustom;
 	function addSongUI():Void
@@ -577,14 +580,20 @@ class ChartingState extends MusicBeatState
 
 		var skin = PlayState.SONG.arrowSkin;
 		if(skin == null) skin = '';
-		noteSkinInputText = new FlxUIInputText(player2DropDown.x, player2DropDown.y + 50, 150, skin, 8);
+		noteSkinInputText = new FlxUIInputText(player2DropDown.x, player2DropDown.y + 50, 100, skin, 8);
 		blockPressWhileTypingOn.push(noteSkinInputText);
+
+		var skin2 = PlayState.SONG.arrowSkin2;
+		if(skin2 == null) skin2 = '';
+		noteSkinInputText2 = new FlxUIInputText(noteSkinInputText.x + noteSkinInputText.width + 10, noteSkinInputText.y, 100, skin2, 8);
+		blockPressWhileTypingOn.push(noteSkinInputText2);
 	
 		noteSplashesInputText = new FlxUIInputText(noteSkinInputText.x, noteSkinInputText.y + 35, 150, _song.splashSkin, 8);
 		blockPressWhileTypingOn.push(noteSplashesInputText);
 
 		var reloadNotesButton:FlxButton = new FlxButton(noteSplashesInputText.x + 5, noteSplashesInputText.y + 20, 'Change Notes', function() {
 			_song.arrowSkin = noteSkinInputText.text;
+			_song.arrowSkin2 = noteSkinInputText2.text;
 			updateGrid();
 		});
 
@@ -605,6 +614,7 @@ class ChartingState extends MusicBeatState
 		tab_group_song.add(stepperSpeed);
 		tab_group_song.add(reloadNotesButton);
 		tab_group_song.add(noteSkinInputText);
+		tab_group_song.add(noteSkinInputText2);
 		tab_group_song.add(noteSplashesInputText);
 		tab_group_song.add(new FlxText(stepperBPM.x, stepperBPM.y - 15, 0, 'Song BPM:'));
 		tab_group_song.add(new FlxText(stepperSpeed.x, stepperSpeed.y - 15, 0, 'Song Speed:'));
@@ -2748,6 +2758,7 @@ class ChartingState extends MusicBeatState
 			needsVoices: _song.needsVoices,
 			speed: _song.speed,
 			arrowSkin: _song.arrowSkin,
+			arrowSkin2: _song.arrowSkin2,
 			splashSkin: _song.splashSkin,
 
 			player1: _song.player1,
