@@ -406,7 +406,7 @@ class Note extends FlxSprite
 				if((isSustainNote && prevNote.wasGoodHit) || strumTime <= Conductor.songPosition)
 					wasGoodHit = true;
 			}
-			if(texture != PlayState.arrowSkin2 && PlayState.arrowSkin1.length > 1)
+			if(texture != PlayState.arrowSkin2 && PlayState.arrowSkin2.length > 1)
 				reloadNote("", "", "", "2");
 		}
 
