@@ -394,7 +394,8 @@ class Note extends FlxSprite
 
 			if (strumTime < Conductor.songPosition - Conductor.safeZoneOffset && !wasGoodHit)
 				tooLate = true;
-			reloadNote("", "", "", "1");
+			if(texture != PlayState.arrowSkin1 && PlayState.arrowSkin1.length > 1)
+				reloadNote("", "", "", "1");
 		}
 		else
 		{
@@ -405,7 +406,8 @@ class Note extends FlxSprite
 				if((isSustainNote && prevNote.wasGoodHit) || strumTime <= Conductor.songPosition)
 					wasGoodHit = true;
 			}
-			reloadNote("", "", "", "2");
+			if(texture != PlayState.arrowSkin2 && PlayState.arrowSkin1.length > 1)
+				reloadNote("", "", "", "2");
 		}
 
 		if (tooLate && !inEditor)
