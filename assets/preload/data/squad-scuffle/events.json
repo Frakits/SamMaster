@@ -1,0 +1,110 @@
+{
+	"song": {
+		"speed": 3,
+		"stage": "void",
+		"player1": "bf",
+		"player2": "newsam",
+		"player3": null,
+		"events": [
+			[
+				0,
+				[
+					[
+						"Change Character",
+						"dad",
+						"phoney"
+					]
+				]
+			],
+			[
+				821.917808219178,
+				[
+					[
+						"Change NoteSkin",
+						"",
+						"glitchnotes"
+					]
+				]
+			],
+			[
+				106438.356164384,
+				[
+					[
+						"Change NoteSkin",
+						"",
+						"NOTE_assets"
+					]
+				]
+			],
+			[
+				106849.315068493,
+				[
+					[
+						"Change Character",
+						"dad",
+						"newsam"
+					]
+				]
+			],
+			[
+				133047.94520548,
+				[
+					[
+						"Change NoteSkin",
+						"",
+						"portalnotes"
+					]
+				]
+			],
+			[
+				133150.684931507,
+				[
+					[
+						"Change Character",
+						"dad",
+						"frak"
+					]
+				]
+			],
+			[
+				238253.424657535,
+				[
+					[
+						"Change NoteSkin",
+						"",
+						"NOTE_assets"
+					]
+				]
+			],
+			[
+				238356.164383562,
+				[
+					[
+						"Change Character",
+						"dad",
+						"newsam"
+					]
+				]
+			],
+			[
+				290547.94520548,
+				[
+					[
+						"Change NoteSkin",
+						"",
+						"parasitenotes"
+					]
+				]
+			]
+		],
+		"notes": [],
+		"splashSkin": "noteSplashes",
+		"validScore": false,
+		"arrowSkin2": null,
+		"gfVersion": "gf",
+		"bpm": 146,
+		"arrowSkin": "",
+		"needsVoices": true,
+		"song": "squad-scuffle"
+	}
+}
