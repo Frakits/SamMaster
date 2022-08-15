@@ -25,7 +25,7 @@ using StringTools;
 class StoryMenuState extends MusicBeatState
 {
 
-	var scoreText:FlxText;
+	var scoreText:Alphabet;
 
 	private static var lastDifficultyName:String = '';
 	var curDifficulty:Int = 1;
@@ -37,6 +37,10 @@ class StoryMenuState extends MusicBeatState
 	var stageBG:Stage;
 	var linearrow:FlxSprite;
 
+	var songListGroup:FlxTypedGroup<Alphabet>;
+
+	var weektextposition:Float;
+	var songText:Alphabet;
 	private var camGame:FlxCamera;
 	private var camStage:FlxCamera;
 
@@ -54,13 +58,18 @@ class StoryMenuState extends MusicBeatState
 		if(curWeek >= WeekData.weeksList.length) curWeek = 0;
 		persistentUpdate = persistentDraw = true;
 
-		scoreText = new FlxText(10, 10, 0, "SCORE: 49324858", 36);
-		scoreText.setFormat("VCR OSD Mono", 32);
+		scoreText = new Alphabet(10, 650, "SCORE: 49324858", true);
+		scoreText.scale.set(0.5, 0.5);
+		for (letter in scoreText.lettersArray)
+			{
+				letter.x *= 0.5;
+			}
 
 		camGame = new FlxCamera();
 		camStage = new FlxCamera();
 		camStage.bgColor.alpha = 0;
 
+		songListGroup = new FlxTypedGroup<Alphabet>();
 
 		FlxG.cameras.reset(camGame);
 		FlxG.cameras.add(camStage);
@@ -72,12 +81,6 @@ class StoryMenuState extends MusicBeatState
 		camStage.zoom = 0.6;
 		camStage.scroll.y = 200;
 		add(stageBG);
-
-		var rankText:FlxText = new FlxText(0, 10);
-		rankText.text = 'RANK: GREAT';
-		rankText.setFormat(Paths.font("vcr.ttf"), 32);
-		rankText.size = scoreText.size;
-		rankText.screenCenter(X);
 
 		arrow2 = new FlxSprite(-1280).loadGraphic(Paths.image("menuassets/arrowStory 2", "sam"));
 		arrow = new FlxSprite(-1280).loadGraphic(Paths.image("menuassets/arrowStory", 'sam'));
@@ -100,18 +103,20 @@ class StoryMenuState extends MusicBeatState
 			var weekFile:WeekData = WeekData.weeksLoaded.get(WeekData.weeksList[i]);
 			loadedWeeks.push(weekFile);
 			WeekData.setDirectoryFromWeek(weekFile);
-			var week:Alphabet = new Alphabet(0, 600 + (10 * i), WeekData.weeksList[i], true);
+			var week:Alphabet = new Alphabet(0, 450 + (50 * i), WeekData.weeksList[i], true);
 			week.scale.set(0.5, 0.5);
-			week.forceX = 300 + (500 * i);
 			for (letter in week.lettersArray)
 				{
 					letter.x *= 0.5;
-					letter.offset.x *= 0.5;
 				}
+			week.forceX = 0 + (40 * i);
 			week.ID = i;
+			week.alpha = 0;
 			groupWeek.add(week);
 
 		}
+		songText = new Alphabet(1150, 10, "", true);
+		add(songText);
 
 		WeekData.setDirectoryFromWeek(loadedWeeks[0]);
 
@@ -125,11 +130,13 @@ class StoryMenuState extends MusicBeatState
 		
 		// add(rankText);
 		add(scoreText);
+		add(songListGroup);
 
 		changeWeek();
 		changeDifficulty();
 
 		super.create();
+
 	}
 
 	override function closeSubState() {
@@ -144,7 +151,7 @@ class StoryMenuState extends MusicBeatState
 		lerpScore = Math.floor(FlxMath.lerp(lerpScore, intendedScore, CoolUtil.boundTo(elapsed * 30, 0, 1)));
 		if(Math.abs(intendedScore - lerpScore) < 10) lerpScore = intendedScore;
 
-		scoreText.text = "WEEK SCORE:" + lerpScore;
+		scoreText.changeText("WEEK SCORE:" + lerpScore);
 
 		// FlxG.watch.addQuick('font', scoreText.font);
 
@@ -196,7 +203,19 @@ class StoryMenuState extends MusicBeatState
 		}
 
 		super.update(elapsed);
-
+		groupWeek.forEach(function(spr:Alphabet)
+			{
+				spr.y = FlxMath.lerp(spr.y, 450 - weektextposition + (50 * spr.ID), CoolUtil.fixFps(0.1));
+				spr.x = FlxMath.lerp(spr.x, 50 - weektextposition / 2.5 + (37 * spr.ID), CoolUtil.fixFps(0.1));
+				if (spr.ID == curWeek)
+				{
+					spr.alpha = FlxMath.lerp(spr.alpha, 1, CoolUtil.fixFps(0.1));
+				}
+				else
+				{
+					spr.alpha = FlxMath.lerp(spr.alpha, 0.5, CoolUtil.fixFps(0.1));
+				}
+			});
 	}
 
 	var movedBack:Bool = false;
@@ -288,6 +307,8 @@ class StoryMenuState extends MusicBeatState
 		var diffStr:String = WeekData.getCurrentWeek().difficulties;
 		if(diffStr != null) diffStr = diffStr.trim(); //Fuck you HTML5
 
+		weektextposition = 50 * curWeek;
+
 		if(diffStr != null && diffStr.length > 0)
 		{
 			var diffs:Array<String> = diffStr.split(',');
@@ -333,6 +354,36 @@ class StoryMenuState extends MusicBeatState
 		var stringThing:Array<String> = [];
 		for (i in 0...leWeek.songs.length) {
 			stringThing.push(leWeek.songs[i][0]);
+		}
+		var songList:String = '';
+		songListGroup.clear();
+		for (i in 0...stringThing.length + 1)
+		{
+			if (i == 0)
+			{
+				songList = "-SONGS- ";
+				var songThing:Alphabet = new Alphabet(0, 50 * i, songList.toUpperCase(), true);
+				songThing.scale.set(0.5, 0.5);
+				for (letter in songThing.lettersArray)
+					{
+						letter.x *= 0.5;
+						letter.offset.x = -200 - 50 * i;
+					}
+				songListGroup.add(songThing);
+			}
+			else
+			{
+				songList = stringThing[i - 1];
+				var songThing:Alphabet = new Alphabet(0, 50 * i, songList.toUpperCase(), true);
+				songThing.scale.set(0.5, 0.5);
+				for (letter in songThing.lettersArray)
+					{
+						letter.x *= 0.5;
+						letter.offset.x = -210 - 37 * i;
+					}
+				songListGroup.add(songThing);
+			}
+			
 		}
 
 		#if !switch

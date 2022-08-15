@@ -3199,6 +3199,7 @@ class PlayState extends MusicBeatState
 				finishCallback();
 			});
 		}
+		skippingSong = false;
 	}
 
 

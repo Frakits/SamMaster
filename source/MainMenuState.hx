@@ -343,7 +343,7 @@ class MainMenuState extends MusicBeatState
 								switch (daChoice)
 								{
 									case 'play':
-										MusicBeatState.switchState(new FreeplayState());
+										MusicBeatState.switchState(new StoryMenuState());
 										if (!FlxG.keys.pressed.SHIFT)
 											CoolUtil.browserLoad("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
 									#if MODS_ALLOWED

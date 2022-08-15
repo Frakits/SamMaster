@@ -22,6 +22,7 @@ class Alphabet extends FlxSpriteGroup
 	// for menu shit
 	public var forceX:Float = Math.NEGATIVE_INFINITY;
 	public var targetY:Float = 0;
+	public var alignment:String = 'forward';
 	public var yMult:Float = 120;
 	public var xAdd:Float = 0;
 	public var yAdd:Float = 0;
@@ -136,12 +137,18 @@ class Alphabet extends FlxSpriteGroup
 			{
 				if (lastSprite != null)
 				{
-					xPos = lastSprite.x + lastSprite.width;
+					if (alignment == 'backwards')
+						xPos = lastSprite.x - lastSprite.width;
+					else
+						xPos = lastSprite.x + lastSprite.width;
 				}
 
 				if (consecutiveSpaces > 0)
 				{
-					xPos += 40 * consecutiveSpaces * textSize;
+					if (alignment == 'backwards')
+						xPos -= consecutiveSpaces * (lastSprite.width * textSize);
+					else
+						xPos += consecutiveSpaces * (lastSprite.width * textSize);
 				}
 				consecutiveSpaces = 0;
 

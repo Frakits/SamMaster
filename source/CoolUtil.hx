@@ -129,4 +129,7 @@ class CoolUtil
 		FlxG.openURL(site);
 		#end
 	}
+	public static function fixFps(a:Float) {
+		return a / (ClientPrefs.framerate / 60);
+	}
 }
