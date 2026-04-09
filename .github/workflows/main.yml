@@ -37,6 +37,7 @@ jobs:
           haxelib install flixel-ui     2.4.0  --quiet
           haxelib install hscript       2.4.0  --quiet
           haxelib install extension-webm --quiet
+          haxelib install linc_luajit 0.0.6 --quiet
 
       # ── Git-based haxelib packages ─────────────────────────────────────────────
       - name: Install git haxelib packages
@@ -44,7 +45,6 @@ jobs:
         run: |
           haxelib git discord_rpc    https://github.com/Aidan63/linc_discord-rpc.git  --quiet
           haxelib git faxe           https://github.com/uhrobots/faxe.git             --quiet
-          haxelib git linc_luajit    https://github.com/andrewfishman/linc_luajit.git --quiet
 
       # ── lime setup ────────────────────────────────────────────────────────────
       - name: Setup lime
