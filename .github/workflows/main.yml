@@ -49,7 +49,6 @@ jobs:
         shell: bash
         run: |
           haxelib git discord_rpc    https://github.com/Aidan63/linc_discord-rpc.git  --quiet
-          haxelib git extension-webm https://github.com/Geokureli/extension-webm.git --quiet
           haxelib git faxe           https://github.com/uhrobots/faxe.git             --quiet
           haxelib git hscript-plus   https://github.com/away3d/hscript-plus.git       --quiet
           haxelib git systools       https://github.com/nickelc/modio-haxe.git        --quiet
